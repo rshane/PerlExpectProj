@@ -122,13 +122,29 @@ sub einmass_init {
     my $e = new Expect;
     my $success;
 
-    $e -> raw_pty(0);
+    $e -> raw_pty(1);
+#    $e->debug(3);
+#    $e->exp_internal( 1 );
     $logfile = $logfile ? $logfile : LOG();
     $e->log_file("$logfile", "w");
     $e->spawn("telnet -l $host $ipadd")
 	or die "Cannot spawn telnet: $!\n";
     $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("$hpass\r\n");}]);
+    my $success = $e->expect($timeout, -re => '\s*>');
+    check_success($e, $success, 'prompt');
+#    if ($after =~ /Welcome to Microsoft Telnet Service/i) {
+#	print "Successful Password command";
+#    }
+#    else {
+#	print"The following:" . $after  .  " was NOT SUCCESFUL";
+	
+#    }
+    
+ #   check_success($e, $successful, 'password');
 
+
+#    my $successful =  $e->expect($timeout, qr/Welcome to Microsoft Telnet Server/i );
+#    check_success($e, $successful, 'logged in');
     $e;
 }
 
@@ -251,7 +267,7 @@ sub einmass_enter {
     my $pass = $args{'<<PASSWORD>>'};
     my @atemplate = split //, $template;
 #Using inmass via expect object $e passed in as a parameter
-    for(my $i =0; $i <= scalar(@atemplate); $i++) {
+    for(my $i =0; $i <= scalar($atemplate); $i++) {
 	    $e->clear_accum();
 	    $e->send($atemplate[$i]);
 	    sleep(1);
