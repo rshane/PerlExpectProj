@@ -22,20 +22,20 @@ use constant HPASS => DEBUG() ? 'windows' : die('NEED HOST PASSWORD'); #if in de
 use constant UPATH => 'expectPath.txt';
 use constant USER => DEBUG() ? 'rjshane' : die('NEED USER NAME');
 use constant UPASS => DEBUG() ? 'RJShane--' : die('NEED USER PASSWORD');
-use constant REGEX_DEBUG => '/[11;22H<<VALUE>>/';
+use constant REGEX_DEBUG => '/^/[[11;22H<<VALUE>>/';
 use constant REGEX_PRODUCTION => ;
 use constant REGEX => DEBUG() ? REGEX_DEBUG : REGEX_PRODUCTION; 
 use constant INIT_INMASS_SESSION => <<END_STRING;
 @{[ MOUNT_M ]}
 NET USE N: @{[ FILE_SERVER_UNC ]} /user:<<USER>> "<<PASSWORD>>"
-NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:<<USER>> "<<PASSWORD>>"
-SUBST O: C:\\TEMP
-M:
+NET USE V: \\\\file.corp.qual-pro.com 
+SUBST O: C:\\\\TEMP
+    M:
 INMASS
 END_STRING
     
 
-our $debug = 1;
+    our $debug = 1;
 
 #---------
 sub bprint  {
@@ -149,23 +149,105 @@ sub einmass_init {
     $e;
 }
 
+#----------------
+sub einmass_run {
+#For a generic command, uses a pattern=>value hash, to create a specific command from the generic one
+#Sends command to host computer and checks whether command was successful or not, if not returns an error
+#Parameters: (expect_obj, command, pattern_value_hash, regex_check, *log)
+#The log parameter is optional if not set will default to "edumplog.txt"
+#returns expect object
+    
+    my $e = shift;
+    my $cmd = shift;
+    my $patt_value_hash = shift;
+    my $check; #tells expect what to check for after command ran to see if successful or not
+    my $log = shift;
 
-# Parameters( e_object pattern ) 
-# Expect a given pattern as a response or error out
-# returns expect object
-#--------------
-sub einmass_run  {
-#--------------
-    my $e       = shift;
-    my $pattern = shift;
     my $timeout = 5;
-    my $success = $e->expect($timeout, re =>$pattern);
+    open($log, "<<$log");
+    foreach my $key (sort keys %$patt_value_hash) {
+	my $val = $patt_value_hash ->{$key};
+	$cmd =~ s/$key/$val/g;
+    }
+    my $successful = $e->expect($timeout, [ qr/"$check"/i => sub {$e->send("$cmd");}]);
+    if ($successful == 1) {
+	print $log "Successfully sent command: $cmd\n";
+    }
+    else {
+	die("ERROR occured with sending command $cmd to host computer\n");
+    }
+    
+    $e;
+    
+=comment
+    my $init_inmass_sess = shift;
+    my $ipadd = shift;
+    my %userprofile = @_;
+    
+    my $user = $userprofile{'<<USER>>'};
+    my $userpass = $userprofile{'<<PASSWORD>>'};
 
-    if ($success != 1) {
-	die("Did not find pattern in inmass to register that change happened");
+    foreach my $key (sort keys %userprofile) {
+    my $val = $userprofile{$key};
+    $init_inmass_sess =~ s/$key/$val/g;
     }
 
+    if(DEBUG()) {
+    print "IN DEBUG MODE \n";
+    $user = USER();
+    $userpass = UPASS();
+    }
+
+    my @ainit_inmass_sess = split /\n/, $init_inmass_sess;
+#     print Dumper(@ainit_inmass_sess);
+
+#    my $length = scalar(@ainit_inmass_sess);
+#    print "Length $length\n";
+#    my $i = 0;
+#    foreach my $val (@ainit_inmass_sess) {
+#print " i: $i,\n $val\n";
+#$i = $i + 1;
+#    }    
+
+
+
+#Using Expect to access inmass
+    my $timeout = 5;
+    my $e = new Expect;
+
+    $e -> raw_pty(1);
+    $e->log_file("edumplog.txt", "w");
+    $e->spawn("telnet -l $user $ipadd")
+	or die "Cannot spawn telnet: $!\n";
+   
+    $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("$userpass\r\n");}]);
+    sleep(1);
+
+
+
+    for(my $i =0; $i <= scalar(@ainit_inmass_sess); $i++) {
+    $e->expect($timeout, [ qr/Bobby>/i => sub {$e->send("cd ..\r\n");}]);
+    } 
+
+
     $e;
+
+
+
+
+#get to path on the telnetted machine
+
+
+
+#Log into Bobby Shanes Windows VM, make appropriate drives for inmass, and access inmass
+    $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("windows\r\n");}]);
+    $e->expect($timeout, [ qr/Bobby>/i => sub {$e->send("cd ..\r\n");}]);
+    $e->expect($timeout, [ qr/Settings>$/i => sub {$e->send("test.bat\r\n");}]);
+    $e->expect($timeout, [ qr/Done/i => sub {$e->send("m:\r\n");}]);
+    $e->expect($timeout, [ qr/M/i => sub {$e->send("inmass\r");}]);
+    sleep(1);
+=cut 
+
 }
 
 
@@ -175,19 +257,34 @@ sub einmass_enter {
 #Parameters: (action_template, expect_obj, hash_containing_company_number_and_company_value)
 #returns expect object
 
-    
-    my $template = shift;
+    my $action_template = shift;
     my $e = shift;
     my %args = @_;
-    
+
 
     foreach my $key (keys %args) {
 	my $val = $args{$key};
-	$template =~ s/$key/$val/g;
+	$action_template =~ s/$key/$val/g;
     }
+
     
-    $e->send($template);
-    $e 
+    my $cnum = $args{'<<COMPANYNUMBER>>'};
+    my $pass = $args{'<<PASSWORD>>'};
+    $e->send("99\r");
+
+=comment
+NOT NEEDED xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+my @atemplate = split //, $action_template;
+#Using inmass via expect object $e passed in as a parameter
+    for(my $i =0; $i <= scalar(@atemplate); $i++) {
+	$e->clear_accum();
+	$e->send($atemplate[$i]);
+	sleep(1);
+    }
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+=cut
+
+$e 
 }
 
 
@@ -205,26 +302,31 @@ sub einmass_iterator {
 
     
 #    print "einmass_iterator: hargs: " . Dumper(\@hargs);
-    my $i = 0;
     foreach my $args (@$hargs) { 
- 	my $template = $origtemplate;
-	my $itemid = $args->{'<<ITEMID>>'};
-	my $value = $args->{'<<VALUE>>'};
-	my $pattern = $args->{'pattern'};
-	$template =~ s/<<ITEMID>>/$itemid/;
-	$template =~ s/<<VALUE>>/$value/;
-	$pattern =~ s/<<VALUE>>/$value/;
-	
+	my $template = $origtemplate;
+#print "  args: " . Dumper($args);
+	my @atemplate = split( /(<<ITEMID>>\.|c\.|8\.|<<VALUE>>.|\.)/, $template);
+	foreach my $elr(@atemplate) {
+#    hcprint $ele;
+	}
+	foreach my $key (sort keys %$args) {
+	    my $val = $args->{$key};
+#    print("KEY: $key VAL: $val\n");
+#    $action_template =~ s/$key/$val/g;
+	}
+
+	my $cnum = $args->{'<<ITEMID>>'};
+	my $pass = $args->{'<<VALUE>>'};
+
+=comment
+#Using inmass via expect object $e passed in as a parameter
+    for(my $i =0; $i <= scalar(@atemplate); $i++) {
 	$e->clear_accum();
-	$e->send($template);
-	einmass_run($e, $pattern);
-	
-
-    }
-
-	
-	
-     
+	$e->send($atemplate[$i]);
+	sleep(1);
+}
+=cut
+    } 
     $e;  
 }
 
@@ -235,15 +337,15 @@ sub einmass_exit {
     my $e = shift;
     my @atemplate = split //, $template;
     for(my $i =0; $i <= scalar(@atemplate); $i++) {
-	    $e->clear_accum();
-	    $e->send($atemplate[$i]);
-	    sleep(1);
+	$e->clear_accum();
+	$e->send($atemplate[$i]);
+	sleep(1);
     } 
     $e->soft_close();
 
 }
 
-	
+
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
 my $pattern = REGEX();
 my @tarray1 = ({'<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 8}, {'<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 9});
@@ -267,11 +369,11 @@ $userpass = UPASS();
 $init_inmass_sess = INIT_INMASS_SESSION();
 my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 
+my %iterator_hash = ('template' => $tmpl1, 'expect_object' => $e, 'pattern' => $pattern, 'items_array' => \@tarray1);
 
 my $expectobj = einmass_init($host, $hpass, $ipadd, \%userprofile); 
-my %iterator_hash = ('template' => $tmpl1, 'expect_object' => $expectobj, 'pattern' => $pattern, 'items_array' => \@tarray1);
-
+#einmass_run($expectobj, $cmd, $patt_value_hash, $pattern); 
 einmass_enter($tmpl0, $expectobj, %thash0);
-einmass_iterator(%iterator_hash);
+#einmass_iterator(%iterator_hash);
 #einmass_exit($tmpl2, $expectobj);
 $expectobj->soft_close();
