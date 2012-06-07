@@ -85,23 +85,21 @@ sub file_to_string {
 
 sub check_success { 
 #checks to see if a command was successful
-#Parameters: (log_file, an_expect_statement, a_name_for_the_command, a_regex_expression_to_check_after_command_sent the_actual_command)
+#Parameters: (log_file, an_expect_statement, a_name_for_the_command, the_actual_command)
 #returns an error if a command was not successful
 
     my $e = shift;
     my $success = shift;
     my $scommand = shift;
-    my $regexchk = shift;
     my $command = shift;
-    my $log = $e->log_file();
-    my $before = $e->before();
+    my $log = shift;
 
     if ($success == 1) {
 	print $log "\nSuccessfully sent $scommand: $command\n";
-	print "\nAFTER::\n" . $e->after() . "\n::::\n";
+
     }
     else {
-	print $log "\nERROR occured with sending $scommand: $command\n";
+
 	die("\nERROR occured with sending $scommand: $command\n");
     }
 }
@@ -122,29 +120,13 @@ sub einmass_init {
     my $e = new Expect;
     my $success;
 
-    $e -> raw_pty(1);
-#    $e->debug(3);
-#    $e->exp_internal( 1 );
+    $e -> raw_pty(0);
     $logfile = $logfile ? $logfile : LOG();
     $e->log_file("$logfile", "w");
     $e->spawn("telnet -l $host $ipadd")
 	or die "Cannot spawn telnet: $!\n";
     $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("$hpass\r\n");}]);
-    my $success = $e->expect($timeout, -re => '\s*>');
-    check_success($e, $success, 'prompt');
-#    if ($after =~ /Welcome to Microsoft Telnet Service/i) {
-#	print "Successful Password command";
-#    }
-#    else {
-#	print"The following:" . $after  .  " was NOT SUCCESFUL";
-	
-#    }
-    
- #   check_success($e, $successful, 'password');
 
-
-#    my $successful =  $e->expect($timeout, qr/Welcome to Microsoft Telnet Server/i );
-#    check_success($e, $successful, 'logged in');
     $e;
 }
 
@@ -252,58 +234,69 @@ sub einmass_run {
 
 #----------------
 sub einmass_enter {
-    my $template = shift;
+#Goes to correct path in inmass, enters in company number, password, then goes to desired choice
+#Parameters: (action_template, expect_obj, hash_containing_company_number_and_company_value)
+#returns expect object
+
+    my $action_template = shift;
     my $e = shift;
     my %args = @_;
 
 
     foreach my $key (keys %args) {
 	my $val = $args{$key};
-	$template =~ s/$key/$val/g;
+	$action_template =~ s/$key/$val/g;
     }
 
     
     my $cnum = $args{'<<COMPANYNUMBER>>'};
     my $pass = $args{'<<PASSWORD>>'};
-    my @atemplate = split //, $template;
+    my @atemplate = split //, $action_template;
 #Using inmass via expect object $e passed in as a parameter
-    for(my $i =0; $i <= scalar($atemplate); $i++) {
+    for(my $i =0; $i <= scalar(@atemplate); $i++) {
 	    $e->clear_accum();
 	    $e->send($atemplate[$i]);
 	    sleep(1);
-    } 
+    }
+$e 
 }
 
 
 #----------------
 sub einmass_iterator {
+#Iterates through each item and enters desired information according to action_template
+#Parameters: (action_template, expect_obj, test_template, array_of_hashes
+#returns expect object
+
     my $origtemplate = shift;
     my $e = shift;
+    my $test_template = shift;
     my @hargs = @_;
     
 #    print "einmass_iterator: hargs: " . Dumper(\@hargs);
     foreach my $args (@hargs) { 
- 	my $template = $origtemplate;
+ 	my $action_template = $origtemplate;
 #	print "  args: " . Dumper($args);
+	my @atemplate = split( /(<<ITEMID>>\.|c\.|8\.|<<VALUE>>.|\.)/, $action_template);
 	foreach my $key (sort keys %$args) {
 	    my $val = $args->{$key};
-	    next if $key eq 're';
-#	    print("KEY: $key VAL: $val\n");
-	    $template =~ s/$key/$val/g;
+	    print("KEY: $key VAL: $val\n");
+#	    $action_template =~ s/$key/$val/g;
 	}
 	
 	my $cnum = $args->{'<<ITEMID>>'};
 	my $pass = $args->{'<<VALUE>>'};
-	my @atemplate = split //, $template;
-
+	
+=comment
 #Using inmass via expect object $e passed in as a parameter
-	for(my $i =0; $i <= scalar($atemplate); $i++) {
+	for(my $i =0; $i <= scalar(@atemplate); $i++) {
 	    $e->clear_accum();
 	    $e->send($atemplate[$i]);
 	    sleep(1);
 	}
-
-    }   
+=cut
+    } 
+    $e;  
 }
 
 #----------------
@@ -312,7 +305,7 @@ sub einmass_exit {
     my $template = shift;
     my $e = shift;
     my @atemplate = split //, $template;
-    for(my $i =0; $i <= scalar($atemplate); $i++) {
+    for(my $i =0; $i <= scalar(@atemplate); $i++) {
 	    $e->clear_accum();
 	    $e->send($atemplate[$i]);
 	    sleep(1);
@@ -323,8 +316,8 @@ sub einmass_exit {
 
 	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
-my $regex;
-my @tarray1 = ({re => $regex, '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 8}, {re => $regex, '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 9});
+my $test_templ = '/;
+my @tarray1 = ('<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 8}, {'<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 9});
 
 my $tpath = "@{[PATH()]}@{[SCRIPT()]}";
 my ($sfile, $tmpl0, $tmpl1, $tmpl2);
@@ -346,8 +339,8 @@ $init_inmass_sess = INIT_INMASS_SESSION();
 my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 
 my $expectobj = einmass_init($host, $hpass, $ipadd); 
-#einmass_run($expectobj, $cmd, $patt_value_hash, $regex_check); 
+einmass_run($expectobj, $cmd, $patt_value_hash, $regex_check); 
 #einmass_enter($tmpl0, $expectobj, %thash0);
-#einmass_iterator($tmpl1, $expectobj, @tarray1);
+einmass_iterator($tmpl1, $expectobj, $test_templ,  @tarray1);
 #einmass_exit($tmpl2, $expectobj);
 $expectobj->soft_close();

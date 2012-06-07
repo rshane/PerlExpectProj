@@ -34,9 +34,41 @@ M:
 INMASS
 END_STRING
 
+#---------
+sub hcprint  {
+#---------
+    my $str   = shift;
+    my @chars = split //, $str;
+    my ($h, $char);
+    foreach my $c (@chars)
+    {
+	$char = ord $c;
+	$h = sprintf("%x", $char);
+	if ($c =~ /[[:cntrl:]]/)  {
+	    print(". | $h\n");
+	} else {
+
+	    printf ("%c | $h\n", $char);
+	}
+    }
+    print "\n";
+}
+
+sub file_to_string {
+#the parameter is a path to a file inclusive of file
+#returns a string representation of the file
+    my ($fh0, $file, $filestring, $filesize);
+    $file = shift;
+    open($fh0, $file) or die ("Can't open $file file: $!\n");
+    $filesize = -s $file;
+    read($fh0, $filestring, $filesize);
+    close($fh0);    
+    $filestring
+}
+
 	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
-my $regex;
+my $regex,
 my @tarray1 = ({re => $regex, '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 8}, {re => $regex, '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 9});
 
 my $tpath = "@{[PATH()]}@{[SCRIPT()]}";
@@ -48,19 +80,24 @@ $tmpl1 = substr($sfile, $-[$#-] ,$+[$#-] - $-[$#-] );
 $tmpl2 = substr($sfile, $+[$#+]);
 
 #einmass_run($expectobj, $cmd, $patt_value_hash, $regex_check); 
-#einmass_enter($tmpl0, $expectobj, %thash0);
+
 
 #Using Expect to access inmass
 my $timeout = 5;
 my $e = new Expect;
+my $log = "edumplog.txt";
 
-$e -> raw_pty(1);
-$e->log_file("edumplog.txt", "w");
+$e -> raw_pty(0);
+$e->log_file($log, "w");
 $e->spawn("telnet -l Bobby 10.2.0.101")
     or die "Cannot spawn telnet: $!\n";
-   
+
+
 $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("windows\r\n");}]);
 sleep(1);
+
+
+
 
 #Log into Bobby Shanes Windows VM, make appropriate drives for inmass, and access inmass
 $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("windows\r\n");}]);
@@ -68,6 +105,12 @@ $e->expect($timeout, [ qr/Bobby>/i => sub {$e->send("cd ..\r\n");}]);
 $e->expect($timeout, [ qr/Settings>$/i => sub {$e->send("test.bat\r\n");}]);
 $e->expect($timeout, [ qr/Done/i => sub {$e->send("m:\r\n");}]);
 $e->expect($timeout, [ qr/M/i => sub {$e->send("inmass\r");}]);
+einmass_enter($tmpl0, $e, %thash0);
+$e->expect($timeout, [ qr/Inventory File Maintenance/i => sub {$e->send("ZBAG\r");}]);
+$e->expect($timeout, [ qr/ZBAG/i => sub {$e->send("C\r");}]);
+$e->expect($timeout, [ qr/Enter Number to Change/i => sub {$e->send("8\r");}]);
+$e->expect($timeout, [ qr/8/i => sub {$e->send("333\r");}]);
+
 
 sub einmass_enter {
     my $template = shift;
@@ -85,7 +128,8 @@ sub einmass_enter {
     my $pass = $args{'<<PASSWORD>>'};
     my @atemplate = split //, $template;
 #Using inmass via expect object $e passed in as a parameter
-    for(my $i =0; $i <= scalar($atemplate); $i++) {
+
+    for(my $i =0; $i <= scalar(@atemplate); $i++) {
 	    $e->clear_accum();
 	    $e->send($atemplate[$i]);
 	    sleep(1);
@@ -93,4 +137,4 @@ sub einmass_enter {
 }
 
 
-$expectobj->soft_close();
+$e->soft_close();

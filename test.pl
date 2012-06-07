@@ -34,24 +34,35 @@ M:
 INMASS
 END_STRING
 
+
 #---------
 sub hcprint  {
 #---------
-    my $str   = shift;
-    my @chars = split //, $str;
-    my ($h, $char);
-    foreach my $c (@chars)
-    {
-	$char = ord $c;
-	$h = sprintf("%x", $char);
-	if ($c =~ /[[:cntrl:]]/)  {
-	    print(". | $h\n");
-	} else {
+    my $type   = shift;
+    print "HI";
+    if ($type =~ /arr/) {
+	my $chars = shift;
+	print "HI";
 
-	    printf ("%c | $h\n", $char);
-	}
     }
-    print "\n";
+    else{
+	my $str = shift;
+	my @chars = split //, $str;
+	
+	my ($h, $char);
+	foreach my $c (@chars)
+	{
+	    $char = ord $c;
+	    $h = sprintf("%x", $char);
+	    if ($c =~ /[[:cntrl:]]/)  {
+	    print(". | $h\n");
+	    } else {
+		
+		printf ("%c | $h\n", $char);
+	    }
+	}
+	print "\n";
+    }
 }
 
 sub file_to_string {
@@ -86,7 +97,10 @@ $tmpl2 = substr($sfile, $+[$#+]);
 my $timeout = 5;
 my $e = new Expect;
 my $log = "edumplog.txt";
+my @arr = qw(hi how are you);
+hcprint('arr', @arr);
 
+=comment
 $e -> raw_pty(0);
 $e->log_file($log, "w");
 $e->spawn("telnet -l Bobby 10.2.0.101")
@@ -105,8 +119,14 @@ $e->expect($timeout, [ qr/Bobby>/i => sub {$e->send("cd ..\r\n");}]);
 $e->expect($timeout, [ qr/Settings>$/i => sub {$e->send("test.bat\r\n");}]);
 $e->expect($timeout, [ qr/Done/i => sub {$e->send("m:\r\n");}]);
 $e->expect($timeout, [ qr/M/i => sub {$e->send("inmass\r");}]);
-einmass_enter($tmpl0, $e, %thash0);
-$e->expect($timeout, [ qr/Inventory File Maintenance/i => sub {$e->send("ZBAGr");}]);
+
+$e->expect($timeout, [ qr/Number/i => sub {$e->send("99\r");}]);
+$e->expect($timeout, [ qr/99/i => sub {$e->send("EXPICSTK\r");}]);
+$e->expect($timeout, [ qr/Date/i => sub {$e->send("\r");}]);
+$e->expect($timeout, [ qr/Inventory/i => sub {$e->send("1\r");}]);
+$e->expect($timeout, [ qr/Inventory/i => sub {$e->send("1\r");}]);
+$e->expect($timeout, [ qr/Inventory File Maintenance/i => sub {$e->send("ZBAG\rC\r8\r356\r\r");}]);
+=cut
 
 
 sub einmass_enter {
