@@ -22,14 +22,14 @@ use constant HPASS => DEBUG() ? 'windows' : die('NEED HOST PASSWORD'); #if in de
 use constant UPATH => 'expectPath.txt';
 use constant USER => DEBUG() ? 'rjshane' : die('NEED USER NAME');
 use constant UPASS => DEBUG() ? 'RJShane--' : die('NEED USER PASSWORD');
-use constant REGEX_DEBUG => '/[11;22H<<VALUE>>/';
+use constant REGEX_DEBUG => 'FAILUREISNOTANOPTION';  #'/[11;22H<<VALUE>>/';
 use constant REGEX_PRODUCTION => ;
 use constant REGEX => DEBUG() ? REGEX_DEBUG : REGEX_PRODUCTION; 
 use constant INIT_INMASS_SESSION => <<END_STRING;
 @{[ MOUNT_M ]}
 NET USE N: @{[ FILE_SERVER_UNC ]} /user:<<USER>> "<<PASSWORD>>"
-NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:<<USER>> "<<PASSWORD>>"
-SUBST O: C:\\TEMP
+NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:<<USER>> "Qual-ProPassword4Inmass"
+SUBST O: C:\\Temp
 M:
 INMASS
 END_STRING
@@ -163,7 +163,8 @@ sub einmass_run  {
 
 
     if ($success != 1) {
-	die("Did not find pattern: $pattern in inmass to check that change happened");
+    die("\nPattern: $pattern\n Success: $success\n");
+#die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
     }
 
     $e;
@@ -270,8 +271,7 @@ my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 my $expectobj = einmass_init($host, $hpass, $ipadd, \%userprofile); 
 my %iterator_hash = ('template' => $tmpl1, 'expect_object' => $expectobj, 'pattern' => $pattern, 'items_array' => \@tarray1);
 
-print "\nTHE PATTERN IS $iterator_hash->{'pattern'}\n";
 einmass_enter($tmpl0, $expectobj, %thash0);
 einmass_iterator(%iterator_hash);
-einmass_exit($tmpl2, $expectobj);
+#einmass_exit($tmpl2, $expectobj);
 $expectobj->soft_close();
