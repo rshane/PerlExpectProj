@@ -161,8 +161,9 @@ sub einmass_run  {
     my $timeout = 5;
     my $success = $e->expect($timeout, re =>$pattern);
 
+
     if ($success != 1) {
-	die("Did not find pattern in inmass to register that change happened");
+	die("Did not find pattern: $pattern in inmass to check that change happened");
     }
 
     $e;
@@ -210,13 +211,15 @@ sub einmass_iterator {
  	my $template = $origtemplate;
 	my $itemid = $args->{'<<ITEMID>>'};
 	my $value = $args->{'<<VALUE>>'};
-	my $pattern = $args->{'pattern'};
+#	my $pattern = $args->{'pattern'};
 	$template =~ s/<<ITEMID>>/$itemid/;
 	$template =~ s/<<VALUE>>/$value/;
 	$pattern =~ s/<<VALUE>>/$value/;
 	
 	$e->clear_accum();
 	$e->send($template);
+	print ("THE PATTERN IN ITERATE IS: $pattern \n");
+	$i++;
 	einmass_run($e, $pattern);
 	
 
@@ -233,12 +236,8 @@ sub einmass_exit {
 #exiting out of inmass
     my $template = shift;
     my $e = shift;
-    my @atemplate = split //, $template;
-    for(my $i =0; $i <= scalar(@atemplate); $i++) {
-	    $e->clear_accum();
-	    $e->send($atemplate[$i]);
-	    sleep(1);
-    } 
+
+    $e->send($template);
     $e->soft_close();
 
 }
@@ -271,7 +270,8 @@ my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 my $expectobj = einmass_init($host, $hpass, $ipadd, \%userprofile); 
 my %iterator_hash = ('template' => $tmpl1, 'expect_object' => $expectobj, 'pattern' => $pattern, 'items_array' => \@tarray1);
 
+print "\nTHE PATTERN IS $iterator_hash->{'pattern'}\n";
 einmass_enter($tmpl0, $expectobj, %thash0);
 einmass_iterator(%iterator_hash);
-#einmass_exit($tmpl2, $expectobj);
+einmass_exit($tmpl2, $expectobj);
 $expectobj->soft_close();
