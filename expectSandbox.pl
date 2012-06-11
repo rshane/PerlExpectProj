@@ -26,7 +26,7 @@ use constant HPASS => DEBUG() ? 'windows' : die('NEED HOST PASSWORD'); #if in de
 use constant UPATH => 'expectPath.txt';
 use constant USER => DEBUG() ? 'rjshane' : die('NEED USER NAME');
 use constant UPASS => DEBUG() ? 'RJShane--' : die('NEED USER PASSWORD');
-use constant REGEX_DEBUG =>  '(\e\[11;22H<<VALUE>>)|(RECORD\s+CHANGED)'; #(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+<<VALUE>>)
+use constant REGEX_DEBUG =>  '(RECORD\s+CHANGED)|(\e\[11;22H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+<<VALUE>>)';
 use constant REGEX_PRODUCTION => 'FILL IN!!!!!!!!!!!' ;
 use constant REGEX => DEBUG() ? REGEX_DEBUG : REGEX_PRODUCTION; 
 use constant INIT_INMASS_SESSION => <<END_STRING;
@@ -163,14 +163,15 @@ sub einmass_run  {
 #--------------
     my $e       = shift;
     my $pattern = shift;
-    my $timeout = 5;
+    my $timeout = 3;
 #    my $success = $e->expect($timeout,  $pattern);
     my @exp_stat = $e->expect($timeout, '-re',  $pattern);
-#    my $fhdebug;
+    my $matched_number = $e->match_number();
 
     print($fhdebug Dumper(\@exp_stat));
 #    print($fhdebug @exp_stat[0]);
     print($fhdebug "\n\nPattern: $pattern \n\n");
+    print($fhdebug "\n\nMatched_number: $matched_number \n\n");
     if (@exp_stat[0] == 1) {
 
 	print($fhdebug "\n\nSuccess: @{[@exp_stat[0]]} \n\n");
