@@ -1,8 +1,12 @@
 #!/usr/bin/perl
 use Expect;
 use Data::Dumper;
+use strict;
 #use warnings;
 use constant DEBUG => 1;
+use constant ITEM_VALUE_A => int(rand(1000));
+use constant ITEM_VALUE_B => int(rand(1000));
+use constant ITEM_VALUE_C => int(rand(1000));
 use constant INMASS_SERVER_UNC =>   '\\inmass.ecm.qual-pro.com';
 use constant INMASS_SERVER_UNC_DEBUG =>  'C:\opt\qp\inmass\200411\bindata';
 use constant FILE_SERVER_UNC_PRODUCTION  => '\\\\file.corp.qual-pro.com';
@@ -22,8 +26,8 @@ use constant HPASS => DEBUG() ? 'windows' : die('NEED HOST PASSWORD'); #if in de
 use constant UPATH => 'expectPath.txt';
 use constant USER => DEBUG() ? 'rjshane' : die('NEED USER NAME');
 use constant UPASS => DEBUG() ? 'RJShane--' : die('NEED USER PASSWORD');
-use constant REGEX_DEBUG => 'FAILUREISNOTANOPTION';  #'/[11;22H<<VALUE>>/';
-use constant REGEX_PRODUCTION => ;
+use constant REGEX_DEBUG =>  '(\e\[11;22H<<VALUE>>)|(RECORD\s+CHANGED)'; #(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+<<VALUE>>)
+use constant REGEX_PRODUCTION => 'FILL IN!!!!!!!!!!!' ;
 use constant REGEX => DEBUG() ? REGEX_DEBUG : REGEX_PRODUCTION; 
 use constant INIT_INMASS_SESSION => <<END_STRING;
 @{[ MOUNT_M ]}
@@ -35,7 +39,8 @@ INMASS
 END_STRING
     
 
-our $debug = 1;
+our $fhdebug;
+open($fhdebug, ">>debug.txt");
 
 #---------
 sub bprint  {
@@ -159,13 +164,27 @@ sub einmass_run  {
     my $e       = shift;
     my $pattern = shift;
     my $timeout = 5;
-    my $success = $e->expect($timeout, re =>$pattern);
+#    my $success = $e->expect($timeout,  $pattern);
+    my @exp_stat = $e->expect($timeout, '-re',  $pattern);
+#    my $fhdebug;
 
+    print($fhdebug Dumper(\@exp_stat));
+#    print($fhdebug @exp_stat[0]);
+    print($fhdebug "\n\nPattern: $pattern \n\n");
+    if (@exp_stat[0] == 1) {
 
-    if ($success != 1) {
-    die("\nPattern: $pattern\n Success: $success\n");
-#die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
+	print($fhdebug "\n\nSuccess: @{[@exp_stat[0]]} \n\n");
     }
+    else {
+	print($fhdebug "\n\nSuccess: 0 \n\n");
+    }
+#MAKE SURE TO DIEEEEEEE IF NOT PASS TEST
+#    my $nosuccess = !defined($success);
+#    if ($success != 1) {
+	
+#	die("\nPatterns: $pattern\n Success: $success\n ");
+#	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
+#    }
 
     $e;
 }
@@ -199,54 +218,61 @@ sub einmass_iterator {
 #Parameters: (a hash contatin template, expect_obj, pattern, array_of_hashes_of_items)
 #returns expect object
     
-    my %args = @_;
-    my $origtemplate = $args{'template'};
-    my $e = $args{'expect_object'};
-    my $pattern = $args{'pattern'};
-    my $hargs = $args{'items_array'};
+    my %args  = @_;
+    my $templ = $args{'template'};
+    my $e     = $args{'expect_object'};
+    my $patt  = $args{'pattern'};
+    my $params = $args{'items_array'};
+  
 
-    
-#    print "einmass_iterator: hargs: " . Dumper(\@hargs);
-    my $i = 0;
-    foreach my $args (@$hargs) { 
- 	my $template = $origtemplate;
-	my $itemid = $args->{'<<ITEMID>>'};
-	my $value = $args->{'<<VALUE>>'};
-#	my $pattern = $args->{'pattern'};
-	$template =~ s/<<ITEMID>>/$itemid/;
-	$template =~ s/<<VALUE>>/$value/;
-	$pattern =~ s/<<VALUE>>/$value/;
+    my ($fh1, $fh2);
+
+    $e->notransfer(1);
+#    $e->exp_internal(1);
+    foreach my $hash ( @$params )
+    {
 	
+	my $tscrpt = $templ;
+	my $pscrpt = $patt;
+
+	foreach my $key ( keys %$hash )
+	{
+	    
+	    my $val = $hash->{ $key };
+	    $tscrpt =~ s/$key/$val/ig;
+	    $pscrpt =~ s/$key/$val/ig;
+
+	}	    
 	$e->clear_accum();
-	$e->send($template);
-	print ("THE PATTERN IN ITERATE IS: $pattern \n");
-	$i++;
-	einmass_run($e, $pattern);
+	$e->send( $tscrpt );
+	einmass_run( $e, $pscrpt );
 	
-
     }
-
-	
-	
-     
-    $e;  
+    
+    close($fhdebug);
+    $e;
 }
+
+
 
 #----------------
 sub einmass_exit {
 #exiting out of inmass
     my $template = shift;
     my $e = shift;
+    my $timeout = 1;
 
     $e->send($template);
-    $e->soft_close();
+    $e->do_soft_close();
+#    $e->expect($timeout, 'eof');
+
 
 }
 
 	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
 my $pattern = REGEX();
-my @tarray1 = ({'<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 8}, {'<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => 9});
+my @tarray1 = ( { '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => ITEM_VALUE_A() }, { '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => ITEM_VALUE_B() }, { '<<ITEMID>>' => 'ZBAG', '<<VALUE>>' => ITEM_VALUE_C() } );
 
 my $tpath = "@{[PATH()]}@{[SCRIPT()]}";
 my ($sfile, $tmpl0, $tmpl1, $tmpl2);
@@ -268,10 +294,14 @@ $init_inmass_sess = INIT_INMASS_SESSION();
 my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 
 
-my $expectobj = einmass_init($host, $hpass, $ipadd, \%userprofile); 
-my %iterator_hash = ('template' => $tmpl1, 'expect_object' => $expectobj, 'pattern' => $pattern, 'items_array' => \@tarray1);
+my $e = einmass_init($host, $hpass, $ipadd, \%userprofile); 
+my %iterator_hash = ( template      => $tmpl1, 
+		      expect_object => $e, 
+		       pattern       => $pattern, 
+		      items_array   => \@tarray1);
 
-einmass_enter($tmpl0, $expectobj, %thash0);
+einmass_enter($tmpl0, $e, %thash0);
 einmass_iterator(%iterator_hash);
-#einmass_exit($tmpl2, $expectobj);
-$expectobj->soft_close();
+einmass_exit($tmpl2, $e);
+
+

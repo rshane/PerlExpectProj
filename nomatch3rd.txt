@@ -1,0 +1,36 @@
+$VAR1 = [
+          1,
+          undef,
+          '11;22H9',
+          '[1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\\Documents and Settings\\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\\opt\\qp\\inmass\\200411\\bindata[6;1HC:\\Documents and Settings\\Bobby>NET USE N: \\\\file.corp.qual-pro.com\\Users\\rjshan[7;1He\\inmass\\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\\Documents and Settings\\Bobby>NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\\Documents and Settings\\Bobby>SUBST O: C:\\Temp[18;1HC:\\Documents and Settings\\Bobby>M:[20;1HM:\\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m***       [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;40H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item                            (Escape to quit)                            [4;1H 2. Description                                                                 [5;1H        ACTION :                                                                [6;1H 3. Avg. Cost                          21. Revision #                           [7;1H 4. Std. Cost                          22. Shrinkage Factor                     [8;1H 5. Stocking Unit                      23. Price Level                          [9;1H 6. Alt. Unit                              Markup                               [10;1H 7. Unit Conversion                        Price                                [11;1H 8. Lead Time                              Qty Break                            [12;1H 9. ABC Class                          24. Multi-Loc                            [13;1H10. Cycle Count                        25. Warehouse                            [14;1H11. Unit Weight                        26. Location                             [15;1H12. Discount Matrix                    27. Safety Stock                         [16;1H13. A/R, A/P Codes                     28. Last Cycle Date                      [17;1H14. Item Class                         29. Lot Size                             [18;1H15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H[K[23;1H[K[24;1H[K[25;1H[K[5;37H[1;7H[31m[40mRECORD CHANGED[3;17H[37m[44m*[22m[30m[47mZBAG           [4;18H[1m[37m[44mBLACK BAG[6;22H0.0000[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[',
+          '[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H03/02/08[17;22HR                 29. Lot Size            1.00[18;64H1.00[19;64HN[22;1H19. Buyer            UNKNO             34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit[24;2HEnter Number to Change (Press RETURN to Continue)     0[3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+
+Pattern: 11;22H9 
+
+$VAR1 = [
+          1,
+          undef,
+          '11;22H333',
+          '[1;7H              [3;18HZBAG           [5;18HC to Change, D to Delete, S to Skip   C[',
+          '[24;56H[22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+
+Pattern: 11;22H333 
+
+$VAR1 = [
+          undef,
+          '1:TIMEOUT',
+          undef,
+          '[11;22H[1m[37m[44m8  [24;56H[1;7H[31m[40mRECORD CHANGED[3;18H[22m[30m[47mZBAG           [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          undef,
+          undef
+        ];
+
+
+Pattern: 11;22H8 
+
