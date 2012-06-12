@@ -1,66 +1,138 @@
 
-Before: [1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\Documents and Settings\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\opt\qp\inmass\200411\bindata[6;1HC:\Documents and Settings\Bobby>NET USE N: \\file.corp.qual-pro.com\Users\rjshan[7;1He\inmass\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\Documents and Settings\Bobby>NET USE V: \\inmass.ecm.qual-pro.com\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\Documents and Settings\Bobby>SUBST O: C:\Temp[18;1HC:\Documents and Settings\Bobby>M:[20;1HM:\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m******    [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;43H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *[22m[30m[47m00023----------[1m[37m[44m    (Escape to quit)                            [4;1H 2. Description                                                                 [5;1H        ACTION :                                                                [6;1H 3. Avg. Cost                          21. Revision #                           [7;1H 4. Std. Cost                          22. Shrinkage Factor                     [8;1H 5. Stocking Unit                      23. Price Level                          [9;1H 6. Alt. Unit                              Markup                               [10;1H 7. Unit Conversion                        Price                                [11;1H 8. Lead Time                              Qty Break                            [12;1H 9. ABC Class                          24. Multi-Loc                            [13;1H10. Cycle Count                        25. Warehouse                            [14;1H11. Unit Weight                        26. Location                             [15;1H12. Discount Matrix                    27. Safety Stock                         [16;1H13. A/R, A/P Codes                     28. Last Cycle Date                      [17;1H14. Item Class                         29. Lot Size                             [18;1H15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H19. Buyer                              34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;23H[3;18H00023389-501   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   C[6;22H0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000 
+Before: SUBST M: C:\opt\qp\inmass\200411\bindata
+Trying 10.2.0.101...
+Connected to 10.2.0.101.
+Escape character is '^]'.
+NET USE N: \\file.corp.qual-pro.com\Users\rjshane\inmass\reports /user:rjshane "RJShane--"
+NET USE V: \\inmass.ecm.qual-pro.com\var /user:rjshane "Qual-ProPassword4Inmass"
+SUBST O: C:\Temp
+M:
+INMASS
+99
+EXPICSTK
+
+1
+1
+00023389-501
+c
+8
+965
+
+Welcome to Microsoft Telnet Service 
+
+password:  
 
 
-Matched: [11;22H717 
+Matched:  
 
 
-After: [12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     [22m[30m[47m0-[24;56H 
-
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(1(7)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*1(7)?)|(\e\[11;24H(\e\[(1|37|44)m)*7)|(Lead\s+Time\s+7(1(7)?)?)|(RECORD\s+CHANGED) 
+After:  
 
 
 
-Success: 1 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*9(6(5)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*6(5)?)|(\e\[11;24H(\e\[(1|37|44)m)*5)|(Lead\s+Time\s+9(6(5)?)?)|(RECORD\s+CHANGED) 
 
 
-Before: [1;7H[1m[31m[40m 
+
+Success: 0 
+
+
+Before: [1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\Documents and Settings\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\opt\qp\inmass\200411\bindata[6;1HC:\Documents and Settings\Bobby>NET USE N: \\file.corp.qual-pro.com\Users\rjshan[7;1He\inmass\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\Documents and Settings\Bobby>NET USE V: \\inmass.ecm.qual-pro.com\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\Documents and Settings\Bobby>SUBST O: C:\Temp[18;1HC:\Documents and Settings\Bobby>M:[20;1HM:\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m******    [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;43H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time        761                   Qty Break                            [12;1H 9. ABC Class        C                 24. Multi-Loc           Y                [13;1H10. Cycle Count      0                 25. Warehouse           WP               [14;1H11. Unit Weight      0.00              26. Location            WIP              [15;1H12. Discount Matrix  0                 27. Safety Stock        0.00             [16;1H13. A/R, A/P Codes                     28. Last Cycle Date     04/16/09         [17;1H14. Item Class       F                 29. Lot Size            1.00             [18;1H15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H19. Buyer                              34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;30H[1;7H[31m[40m 
 
 
 Matched: RECORD CHANGED 
 
 
-After: [3;18H[22m[30m[47m00023469-501   [4;28H[1m[37m[44m469-501 REV 1 DRAGON BATT CNTRL ASSY    [5;18H                                       [6;64H1 [11;22H693[16;65H1/13[24;56H0 [3;18H 
+After: [3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H97 [18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     0[3;18H 
 
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(9(3)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9(3)?)|(\e\[11;24H(\e\[(1|37|44)m)*3)|(Lead\s+Time\s+6(9(3)?)?)|(RECORD\s+CHANGED) 
-
-
-
-Success: 1 
-
-
-Before: [1;7H              [3;18H00022788-503   [4;26H00022788-503 REV A7+,PWA,CRYPTO PM    [5;18HC to Change, D to Delete, S to Skip   C[6;64H  
-
-
-Matched: [11;22H385 
-
-
-After: [16;65H8/04[21;22H     [24;56H[22m[30m[47m0-[24;56H 
-
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*3(8(5)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(5)?)|(\e\[11;24H(\e\[(1|37|44)m)*5)|(Lead\s+Time\s+3(8(5)?)?)|(RECORD\s+CHANGED) 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*9(7()?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+9(7()?)?)|(RECORD\s+CHANGED) 
 
 
 
 Success: 1 
 
 
-Before: [3;23H[1m[37m[44m481-501[4;26H22481-501 REV A3 CUCU CCP PCB ASSY[6;64HA2 
+Before: [1;7H              [3;18H00023469-501   [4;28H469-501 REV 1 DRAGON BATT CNTRL ASSY    [5;18HC to Change, D to Delete, S to Skip   C[6;64H1  
 
 
-Matched: [11;22H551 
+Matched: [11;22H141 
 
 
-After: [16;65H4/27[21;22HKELLY[3;18H 
+After: [16;65H1/13[24;56H[22m[30m[47m0-[24;56H 
 
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(5(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*5(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+5(5(1)?)?)|(RECORD\s+CHANGED) 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*1(4(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*4(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+1(4(1)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H[1m[37m[44m2788-503[4;26H00022788-503 REV A7+,PWA,CRYPTO PM    [6;64H  
+
+
+Matched: [11;22H576 
+
+
+After: [16;65H8/04[21;22H     [24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(7(6)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(6)?)|(\e\[11;24H(\e\[(1|37|44)m)*6)|(Lead\s+Time\s+5(7(6)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H481-501[4;26H22481-501 REV A3 CUCU CCP PCB ASSY[6;64HA2 
+
+
+Matched: [11;22H0 
+
+
+After:   [16;65H4/27[21;22HKELLY[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*0(()?)?)|(\e\[11;23H(\e\[(1|37|44)m)*<<VALUE2>>)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+0(()?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H788[4;26H00022788-501 REV A4+,PWA,MIL-STD-1553B PM[6;65H3 
+
+
+Matched: [11;22H235 
+
+
+After: [16;65H8/04[21;22H     [24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(3(5)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*3(5)?)|(\e\[11;24H(\e\[(1|37|44)m)*5)|(Lead\s+Time\s+2(3(5)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H166[4;30H1668-501 REV A4 FTV PERSONALITY POSITI[6;65H4 
+
+
+Matched: [11;22H588 
+
+
+After: [16;65H4/17[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(8(8)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(8)?)|(\e\[11;24H(\e\[(1|37|44)m)*8)|(Lead\s+Time\s+5(8(8)?)?)|(RECORD\s+CHANGED) 
 
 
 
@@ -73,11 +145,147 @@ Before: [1;7H[31m[40m
 Matched: RECORD CHANGED 
 
 
-After: [3;18H[22m[30m[47m00022788-501   [4;26H[1m[37m[44m00022788-501 REV A4+,PWA,MIL-STD-1553B PM[5;18H                                       [6;65H3[11;22H337[16;65H8/04[21;22H     [24;56H0 [3;18H 
+After: [3;18H[22m[30m[47m00018716-501   [4;29H[1m[37m[44m18716-501 REV B1 ASSY,NETWORK SW PWR SP[5;18H                                       [6;64HB1[11;22H690[16;65H5/29[3;18H 
 
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*3(3(7)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*3(7)?)|(\e\[11;24H(\e\[(1|37|44)m)*7)|(Lead\s+Time\s+3(3(7)?)?)|(RECORD\s+CHANGED) 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(9(0)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9(0)?)|(\e\[11;24H(\e\[(1|37|44)m)*0)|(Lead\s+Time\s+6(9(0)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00018609-501   [4;31H609-501 REV B1 ASSY,MAIN BOARD       [5;18HC to Change, D to Delete, S to Skip   C 
+
+
+Matched: [11;22H272 
+
+
+After: [24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00017959-501   [4;30H[1m[37m[44m7959-501 REV A5 PCBA,ROTOMOD BOARD[5;18H                                       [6;64HA5[16;65H6[21;22HKELLY[24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00016126-501   [4;30H6126-501 REV4.10 PCBA,TVC         [5;18HC to Change, D to Delete, S to Skip   C[6;64H4.1 
+
+
+Matched: [11;22H444 
+
+
+After: [16;67H18[21;22H     [24;56H[22m[30m[47m0-[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*4(4(4)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*4(4)?)|(\e\[11;24H(\e\[(1|37|44)m)*4)|(Lead\s+Time\s+4(4(4)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\Documents and Settings\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\opt\qp\inmass\200411\bindata[6;1HC:\Documents and Settings\Bobby>NET USE N: \\file.corp.qual-pro.com\Users\rjshan[7;1He\inmass\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\Documents and Settings\Bobby>NET USE V: \\inmass.ecm.qual-pro.com\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\Documents and Settings\Bobby>SUBST O: C:\Temp[18;1HC:\Documents and Settings\Bobby>M:[20;1HM:\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m******    [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;43H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time        97                    Qty Break                            [12;1H 9. ABC Class        C                 24. Multi-Loc           Y                [13;1H10. Cycle Count      0                 25. Warehouse           WP               [14;1H11. Unit Weight      0.00              26. Location            WIP              [15;1H12. Discount Matrix  0                 27. Safety Stock        0.00             [16;1H13. A/R, A/P Codes                     28. Last Cycle Date     04/16/09         [17;1H14. Item Class       F                 29. Lot Size            1.00             [18;1H15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H19. Buyer                              34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;30H[1;7H[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H43[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     0[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*4(3()?)?)|(\e\[11;23H(\e\[(1|37|44)m)*3)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+4(3()?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H[22m[30m[47m46[4;28H[1m[37m[44m469-501 REV 1 DRAGON BATT CNTRL ASSY    [6;64H1  
+
+
+Matched: [11;22H120 
+
+
+After: [16;65H1/13[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*1(2(0)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*2(0)?)|(\e\[11;24H(\e\[(1|37|44)m)*0)|(Lead\s+Time\s+1(2(0)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H[22m[30m[47m2788-503[4;26H[1m[37m[44m00022788-503 REV A7+,PWA,CRYPTO PM    [6;64H  
+
+
+Matched: [11;22H941 
+
+
+After: [16;65H8/04[21;22H     [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*9(4(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*4(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+9(4(1)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H[22m[30m[47m481-501[4;26H[1m[37m[44m22481-501 REV A3 CUCU CCP PCB ASSY[6;64HA2 
+
+
+Matched: [11;22H457 
+
+
+After: [16;65H4/27[21;22HKELLY[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*4(5(7)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*5(7)?)|(\e\[11;24H(\e\[(1|37|44)m)*7)|(Lead\s+Time\s+4(5(7)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H[22m[30m[47m788[4;26H[1m[37m[44m00022788-501 REV A4+,PWA,MIL-STD-1553B PM[6;65H3 
+
+
+Matched: [11;22H178 
+
+
+After: [16;65H8/04[21;22H     [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*1(7(8)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(8)?)|(\e\[11;24H(\e\[(1|37|44)m)*8)|(Lead\s+Time\s+1(7(8)?)?)|(RECORD\s+CHANGED) 
 
 
 
@@ -87,14 +295,14 @@ Success: 1
 Before: [1;7H              [3;18H00021668-501   [4;30H1668-501 REV A4 FTV PERSONALITY POSITI[5;18HC to Change, D to Delete, S to Skip   C[6;65H4 
 
 
-Matched: [11;22H25 
+Matched: [11;22H561 
 
 
-After:  [16;65H4/17[24;56H[22m[30m[47m0-[24;56H 
+After: [16;65H4/17[24;56H[22m[30m[47m0-[24;56H 
 
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(5()?)?)|(\e\[11;23H(\e\[(1|37|44)m)*5)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+2(5()?)?)|(RECORD\s+CHANGED) 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(6(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*6(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+5(6(1)?)?)|(RECORD\s+CHANGED) 
 
 
 
@@ -104,27 +312,27 @@ Success: 1
 Before: [3;21H[1m[37m[44m18716[4;29H18716-501 REV B1 ASSY,NETWORK SW PWR SP[6;64HB1 
 
 
-Matched: [11;22H793 
+Matched: [11;22H399 
 
 
 After: [16;65H5/29[24;56H 
 
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(9(3)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9(3)?)|(\e\[11;24H(\e\[(1|37|44)m)*3)|(Lead\s+Time\s+7(9(3)?)?)|(RECORD\s+CHANGED) 
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*3(9(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9(9)?)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+3(9(9)?)?)|(RECORD\s+CHANGED) 
 
 
 
 Success: 1 
 
 
-Before: [1;7H[31m[40mITEM NOT FOUND[3;23H[37m[44m609-6[5;19HOPY From   *[22m[30m[47m272------------[1m[37m[44m           [24;56H0 [5;31H 
+Before: [1;7H[31m[40m 
 
 
-Matched:  
+Matched: RECORD CHANGED 
 
 
-After: [16;65H5/29[24;56H 
+After: [3;18H[22m[30m[47m00018609-501   [4;31H[1m[37m[44m609-501 REV B1 ASSY,MAIN BOARD       [5;18H                                       [11;22H272[24;56H0 [3;18H 
 
 
 
@@ -132,5 +340,379 @@ Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)
 
 
 
-Success: 0 
+Success: 1 
+
+
+Before: [1;7H              [3;18H00017959-501   [4;30H7959-501 REV A5 PCBA,ROTOMOD BOARD[5;18HC to Change, D to Delete, S to Skip   C[6;64HA5[16;65H6[21;22HKELLY[24;56H[22m[30m[47m0-[24;56H[1;7H[1m[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00017959-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00016126-501   [4;30H6126-501 REV4.10 PCBA,TVC         [5;18HC to Change, D to Delete, S to Skip   C[6;64H4.1 
+
+
+Matched: [11;22H994 
+
+
+After: [16;67H18[21;22H     [24;56H[22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*9(9(4)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9(4)?)|(\e\[11;24H(\e\[(1|37|44)m)*4)|(Lead\s+Time\s+9(9(4)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\Documents and Settings\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\opt\qp\inmass\200411\bindata[6;1HC:\Documents and Settings\Bobby>NET USE N: \\file.corp.qual-pro.com\Users\rjshan[7;1He\inmass\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\Documents and Settings\Bobby>NET USE V: \\inmass.ecm.qual-pro.com\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\Documents and Settings\Bobby>SUBST O: C:\Temp[18;1HC:\Documents and Settings\Bobby>M:[20;1HM:\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m******    [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;43H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time                              Qty Break                            [12;1H 9. ABC Class                          24. Multi-Loc                            [13;1H10. Cycle Count                        25. Warehouse                            [14;1H11. Unit Weight                        26. Location                             [15;1H12. Discount Matrix                    27. Safety Stock                         [16;1H13. A/R, A/P Codes                     28. Last Cycle Date                      [17;1H14. Item Class                         29. Lot Size                             [18;1H15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H19. Buyer                              34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;30H[5;56HC 
+
+
+Matched: [11;22H860 
+
+
+After: [12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     [22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*8(6(0)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*6(0)?)|(\e\[11;24H(\e\[(1|37|44)m)*0)|(Lead\s+Time\s+8(6(0)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[1m[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00023469-501   [4;28H[1m[37m[44m469-501 REV 1 DRAGON BATT CNTRL ASSY    [5;18H                                       [6;64H1 [11;22H429[16;65H1/13[24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*4(2(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*2(9)?)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+4(2(9)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H[22m[30m[47m2788-503[4;26H[1m[37m[44m00022788-503 REV A7+,PWA,CRYPTO PM    [6;64H  
+
+
+Matched: [11;22H245 
+
+
+After: [16;65H8/04[21;22H     [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(4(5)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*4(5)?)|(\e\[11;24H(\e\[(1|37|44)m)*5)|(Lead\s+Time\s+2(4(5)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H[22m[30m[47m481-501[4;26H[1m[37m[44m22481-501 REV A3 CUCU CCP PCB ASSY[6;64HA2 
+
+
+Matched: [11;22H929 
+
+
+After: [16;65H4/27[21;22HKELLY[3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*9(2(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*2(9)?)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+9(2(9)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00022788-501   [4;26H00022788-501 REV A4+,PWA,MIL-STD-1553B PM[5;18HC to Change, D to Delete, S to Skip   C[6;65H3 
+
+
+Matched: [11;22H778 
+
+
+After: [16;65H8/04[21;22H     [24;56H[22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(7(8)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(8)?)|(\e\[11;24H(\e\[(1|37|44)m)*8)|(Lead\s+Time\s+7(7(8)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H[1m[37m[44m166[4;30H1668-501 REV A4 FTV PERSONALITY POSITI[6;65H4 
+
+
+Matched: [11;23H22 
+
+
+After: [16;65H4/17[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(2(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*2(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+7(2(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00018716-501   [4;29H[1m[37m[44m18716-501 REV B1 ASSY,NETWORK SW PWR SP[5;18H                                       [6;64HB1[11;23H43[16;65H5/29[24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(4(3)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*4(3)?)|(\e\[11;24H(\e\[(1|37|44)m)*3)|(Lead\s+Time\s+7(4(3)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00018609-501   [4;31H609-501 REV B1 ASSY,MAIN BOARD       [5;18HC to Change, D to Delete, S to Skip   C 
+
+
+Matched: [11;22H272 
+
+
+After: [24;56H[22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[1m[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00017959-501   [4;30H[1m[37m[44m7959-501 REV A5 PCBA,ROTOMOD BOARD[5;18H                                       [6;64HA5[16;65H6[21;22HKELLY[24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00016126-501   [4;30H6126-501 REV4.10 PCBA,TVC         [5;18HC to Change, D to Delete, S to Skip   C[6;64H4.1 
+
+
+Matched: [11;22H889 
+
+
+After: [16;67H18[21;22H     [24;56H[22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*8(8(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(9)?)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+8(8(9)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\Documents and Settings\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\opt\qp\inmass\200411\bindata[6;1HC:\Documents and Settings\Bobby>NET USE N: \\file.corp.qual-pro.com\Users\rjshan[7;1He\inmass\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\Documents and Settings\Bobby>NET USE V: \\inmass.ecm.qual-pro.com\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\Documents and Settings\Bobby>SUBST O: C:\Temp[18;1HC:\Documents and Settings\Bobby>M:[20;1HM:\>INMASS[21;1H[1;1H[1m[37m[44mษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป[2;1Hบ                                                                              บ[3;1Hบ                                                                              บ[4;1Hบ                                                                              บ[5;1Hบ                                INMASS/MRP (r)                                บ[6;1Hบ                   Integrated Manufacturing Software Series                   บ[7;1Hบ      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       บ[8;1Hบ                                                                              บ[9;1Hบ                     Registered To: QUAL-PRO CORPORATION                      บ[10;1Hบ                                                                              บ[11;1Hบ                              [37m[46mษอออออออออออออออออป[37m[44m                             บ[12;1Hบ                              [37m[46mบ[33m[46m Enter password  [37m[46mบ[37m[44m                             บ[13;1Hบ                              [37m[46mบ[33m[46m    [22m[30m[47m*****     [1m[33m[46m   [37m[46mบ[37m[44m                             บ[14;1Hบ                              [37m[46mศอออออออออออออออออผ[37m[44m                             บ[15;1Hบ                                                                              บ[16;1Hบ                                                                              บ[17;1Hบ                                                                              บ[18;1Hบ                                                                              บ[19;1Hบ                                                                              บ[20;1Hบ                                                                              บ[21;1Hบ                                                                              บ[22;1Hบ                                                                              บ[23;1Hบ                                                                              บ[24;1Hบ                                                                              บ[25;1Hศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ[13;42H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time        860                   Qty Break                            [12;1H 9. ABC Class        C                 24. Multi-Loc           Y                [13;1H10. Cycle Count      0                 25. Warehouse           WP               [14;1H11. Unit Weight      0.00              26. Location            WIP              [15;1H12. Discount Matrix  0                 27. Safety Stock        0.00             [16;1H13. A/R, A/P Codes                     28. Last Cycle Date     04/16/09         [17;1H14. Item Class       F                 29. Lot Size            1.00             [18;1H15. Commodity Code                     30. Min Order Qty       1.00             [19;1H16. Class. Group                       31. Taxable             N                [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner          KELLY             33. Status                               [22;1H19. Buyer            PETER             34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;30H[5;56HC 
+
+
+Matched: [11;22H607 
+
+
+After: [24;2HEnter Number to Change (Press RETURN to Continue)     [22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(0(7)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*0(7)?)|(\e\[11;24H(\e\[(1|37|44)m)*7)|(Lead\s+Time\s+6(0(7)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H[1m[37m[44m46[4;28H469-501 REV 1 DRAGON BATT CNTRL ASSY    [6;64H1  
+
+
+Matched: [11;22H874 
+
+
+After: [16;65H1/13[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*8(7(4)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(4)?)|(\e\[11;24H(\e\[(1|37|44)m)*4)|(Lead\s+Time\s+8(7(4)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00022788-503   [4;26H[1m[37m[44m00022788-503 REV A7+,PWA,CRYPTO PM    [5;18H                                       [6;64H [11;22H29 [16;65H8/04[21;22H     [24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(9()?)?)|(\e\[11;23H(\e\[(1|37|44)m)*9)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+2(9()?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00022481-501   [4;26H22481-501 REV A3 CUCU CCP PCB ASSY[5;18HC to Change, D to Delete, S to Skip   C[6;64HA2 
+
+
+Matched: [11;22H612 
+
+
+After: [16;65H4/27[21;22HKELLY[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(1(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*1(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+6(1(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;23H788[4;26H00022788-501 REV A4+,PWA,MIL-STD-1553B PM[6;65H3 
+
+
+Matched: [11;22H589 
+
+
+After: [16;65H8/04[21;22H     [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(8(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(9)?)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+5(8(9)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H166[4;30H1668-501 REV A4 FTV PERSONALITY POSITI[6;65H4 
+
+
+Matched: [11;22H884 
+
+
+After: [16;65H4/17[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*8(8(4)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(4)?)|(\e\[11;24H(\e\[(1|37|44)m)*4)|(Lead\s+Time\s+8(8(4)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H[31m[40m 
+
+
+Matched: RECORD CHANGED 
+
+
+After: [3;18H[22m[30m[47m00018716-501   [4;29H[1m[37m[44m18716-501 REV B1 ASSY,NETWORK SW PWR SP[5;18H                                       [6;64HB1[11;22H635[16;65H5/29[24;56H0 [3;18H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(3(5)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*3(5)?)|(\e\[11;24H(\e\[(1|37|44)m)*5)|(Lead\s+Time\s+6(3(5)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [1;7H              [3;18H00018609-501   [4;31H609-501 REV B1 ASSY,MAIN BOARD       [5;18HC to Change, D to Delete, S to Skip   C 
+
+
+Matched: [11;22H572 
+
+
+After: [24;56H[22m[30m[47m0-[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(7(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*7(2)?)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+5(7(2)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H[1m[37m[44m795[4;30H7959-501 REV A5 PCBA,ROTOMOD BOARD[6;64HA5 
+
+
+Matched: [11;22H231 
+
+
+After: [16;65H6[21;22HKELLY[24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(3(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*3(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+2(3(1)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
+
+
+Before: [3;22H6126[4;30H6126-501 REV4.10 PCBA,TVC         [6;64H4.1 
+
+
+Matched: [11;22H78 
+
+
+After: [16;67H18[21;22H     [24;56H 
+
+
+
+Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(8(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*8(1)?)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+7(8(1)?)?)|(RECORD\s+CHANGED) 
+
+
+
+Success: 1 
 
