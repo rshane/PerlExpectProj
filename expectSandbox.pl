@@ -189,6 +189,7 @@ sub einmass_run  {
     else {
 	print($fhdebug "\n\nSuccess: 0 \n\n");
 	print($myoutput "\n\nSuccess: 0 \n\n");
+	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
 
     }
 #MAKE SURE TO DIEEEEEEE IF NOT PASS TEST
@@ -196,7 +197,7 @@ sub einmass_run  {
 #    if ($success != 1) {
 	
 #	die("\nPatterns: $pattern\n Success: $success\n ");
-#	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
+
 #    }
 
     $e;
@@ -313,8 +314,8 @@ my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => ITEM_VALUE_A() 
 		{ '<<ITEMID>>' => '00022788-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00021668-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00018716-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00018609-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00017959-501', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00018609-501', '<<VALUE>>' => 272}, #int(rand(1000)) },
+		{ '<<ITEMID>>' => '00017959-501', '<<VALUE>>' => 272}, #int(rand(1000)) },
 		{ '<<ITEMID>>' => '00016126-501', '<<VALUE>>' => int(rand(1000)) }, );
 
 my $tpath = "@{[PATH()]}@{[SCRIPT()]}";
