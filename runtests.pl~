@@ -1,3 +1,15 @@
 #!/usr/bin/perl
 use Data::Dumper;
 use strict;
+
+our $fhdebug;
+open($fhdebug, ">>debug.txt");
+my $a = 'X';
+my $b = 207;
+for (my $i= 0; $i < 25; $i++) {
+        print($fhdebug "@{[$a x $b]}\n");
+  if( '/Users/robertshane/Documents/qualpro/qp-perl/PerlExpectProj expectSandbox.pl' == 0) {
+      die("Major Death");
+  }
+}
+print "DONE";
