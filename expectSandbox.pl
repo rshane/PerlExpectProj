@@ -26,9 +26,8 @@ use constant HPASS => DEBUG() ? 'windows' : die('NEED HOST PASSWORD'); #if in de
 use constant UPATH => 'expectPath.txt';
 use constant USER => DEBUG() ? 'rjshane' : die('NEED USER NAME');
 use constant UPASS => DEBUG() ? 'RJShane--' : die('NEED USER PASSWORD');
-use constant REGEX_DEBUG =>  '(\e\[11;22H(\e\[(1|37|44)m)*<<VALUE>>)|(\e\[11;23H(\e\[(1|37|44)m)*<<VALUE2>>)|(\e\[11;24H(\e\[(1|37|44)m)*<<VALUE1>>)|(Lead\s+Time\s+<<VALUE>>)|(RECORD\s+CHANGED)';
-use constant REGEX_PRODUCTION => 'FILL IN!!!!!!!!!!!' ;
-use constant REGEX => DEBUG() ? REGEX_DEBUG : REGEX_PRODUCTION; 
+use constant ROW => 11;
+use constant COLUMN => 22;
 use constant INIT_INMASS_SESSION => <<END_STRING;
 @{[ MOUNT_M ]}
 NET USE N: @{[ FILE_SERVER_UNC ]} /user:<<USER>> "<<PASSWORD>>"
@@ -152,7 +151,7 @@ sub einmass_init {
 	sleep(1);
     }
 
-
+    sleep(1);
     $e;
 }
 
@@ -189,7 +188,7 @@ sub einmass_run  {
     else {
 	print($fhdebug "\n\nSuccess: 0 \n\n");
 	print($myoutput "\n\nSuccess: 0 \n\n");
-	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
+#	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
 
     }
 #MAKE SURE TO DIEEEEEEE IF NOT PASS TEST
@@ -222,6 +221,7 @@ sub einmass_enter {
     }
     
     $e->send($template);
+
     $e 
 }
 
@@ -229,70 +229,112 @@ sub einmass_enter {
 #----------------
 sub einmass_iterator {
 #Iterates through each item and enters desired information according to action_template
-#Parameters: (a hash contatin template, expect_obj, pattern, array_of_hashes_of_items)
+#Parameters: (a hash contatin template, expect_obj, array_of_hashes_of_items, row_for_regex, column_for_regex)
 #returns expect object
-    
+  
+
+
     my %args  = @_;
     my $templ = $args{'template'};
     my $e     = $args{'expect_object'};
-    my $patt  = $args{'pattern'};
     my $params = $args{'items_array'};
+    my $row = $args{'row'};
+    my $col = $args{'column'};
+
   
     my ($fh1, $fh2);
 
 #    $e->notransfer(1);
 #    $e->exp_internal(1);
     my $i = 0;
+    my $prev_value;
+    
     foreach my $hash_item ( @$params )
     {
-	
 	my $tscrpt = $templ;
-	my $pscrpt = $patt;
+	my $pscrpt;
+	my ($key, $val);
 	my $itemid = $hash_item->{'<<ITEMID>>'};
 	my $value = $hash_item->{'<<VALUE>>'};
 
-	my @digitval = split //, $value;
 	my $key_item  = '<<ITEMID>>';
 	my $key_value = '<<VALUE>>';
-	my $key2      = '<<VALUE2>>';
-	my $key1      = '<<VALUE1>>';
-		
 	$tscrpt =~ s/$key_item/$itemid/ig;
 	$tscrpt =~ s/$key_value/$value/ig;
-	
-	if (scalar(@digitval) == 3) {
-	    my $val2 = "$digitval[1]($digitval[2])?";
-	    my $val1 = $digitval[2]; #1's digit
-	    $pscrpt =~ s/$key2/$val2/ig;
-	    $pscrpt =~ s/$key1/$val1/ig;
+
+
+
+	if ($i == 0)
+	{
+	    $key = '<<VALUE>>';
+	    $val = $value;
+	    $pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+${value})|(RECORD\s+CHANGED)';
+	    $pscrpt =~ s/<<ROW>>/$row/ig;
+	    $pscrpt =~ s/<<COLUMN>>/$col/ig;
+	    $pscrpt =~ s/$key/$val/ig;
+	    $i++;
 	}
 
-	if (scalar(@digitval) == 2) {
-	    my $val2 = $digitval[1];
-	    $pscrpt =~ s/$key2/$val2/ig;
+	else 
+	{
+	    my @digitval = split //, $value;
+	    my @prev_val = split //, $prev_value;
+	    
+	    if ($digitval[0] != $prev_val[0]) {
+		$key = '<<VALUE>>';
+		$val = "$digitval[0]($digitval[1]($digitval[2])?)?";
+		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
+		$pscrpt =~ s/<<ROW>>/$row/ig;
+		$pscrpt =~ s/<<COLUMN>>/$col/ig;
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    elsif ($digitval[1] != $prev_val[1]) {
+		$key = '<<VALUE2>>';
+		$val = "$digitval[1]($digitval[2])?";
+		my $ncol = $col + 1;
+		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$ncol/ig;
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    elsif ($digitval[2] != $prev_val[2]) {
+		$key = '<<VALUE2>>';
+		$val = "$digitval[2]";
+		my $nncol = $col + 2;
+		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$nncol/ig;
+
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    else 
+	    {
+
+		$key = '<<VALUE>>';
+		$val = $value;
+		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$col/ig;
+	        $pscrpt =~ s/$key/$value/ig;
+	    }
 	}
 
-	my $key = "<<VALUE>>";
-	my $val = "$digitval[0]($digitval[1]($digitval[2])?)?";
-	$pscrpt =~ s/$key/$val/ig;
+	$prev_value = $value;
 
-	
-	$e->clear_accum();
+      	$e->clear_accum();
 	$e->send( $tscrpt );
 	einmass_run( $e, $pscrpt, $itemid);
-	
-	
     }
-    
     close($fhdebug);
-#    $e;
+    $e;
 }
-
 
 
 #----------------
 sub einmass_exit {
-#exiting out of inmass
+#exits out of inmass and expect
+#Parameters: ( template, expect_obj)
+#returns expect object
     my $template = shift;
     my $e = shift;
     my $timeout = 1;
@@ -306,7 +348,8 @@ sub einmass_exit {
 
 	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
-my $pattern = REGEX();
+my $row = ROW();
+my $column = COLUMN();
 my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => ITEM_VALUE_A()  },
 		{ '<<ITEMID>>' => '00023469-501', '<<VALUE>>' => ITEM_VALUE_B()  },
 		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => ITEM_VALUE_C()  },
@@ -341,8 +384,9 @@ my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 my $e = einmass_init($host, $hpass, $ipadd, \%userprofile); 
 my %iterator_hash = ( template      => $tmpl1, 
 		      expect_object => $e, 
-		      pattern       => $pattern, 
-		      items_array   => \@tarray1);
+		      items_array   => \@tarray1,
+		      row           => $row,
+		      column        => $column);
 
 einmass_enter($tmpl0, $e, %thash0);
 einmass_iterator(%iterator_hash);
