@@ -96,7 +96,6 @@ sub einmass_init {
     $e -> raw_pty(0);
     $logfile = $logfile ? $logfile : LOG();
     $e->log_file("$logfile", "w");
-  #  $e->debug(3);
     $e->spawn("telnet -l $host $ipadd")
 	or die "Cannot spawn telnet: $!\n";
     $e->expect($timeout, [ qr/password:\s*\r?$/i => sub {$e->send("$hpass\r\n");}]);
@@ -106,13 +105,15 @@ sub einmass_init {
     my $user = $userprofile->{'<<USER>>'};
     my $userpass = $userprofile->{'<<PASSWORD>>'};
 
-    foreach my $key (sort keys %$userprofile) {
+    foreach my $key (sort keys %$userprofile) 
+    {
 	my $val = $userprofile->{$key};
 	$init_inmass_sess =~ s/$key/$val/g;
     }
     my @ainit_inmass_sess = split /\n/, $init_inmass_sess;
   
-    foreach my $val (@ainit_inmass_sess) {
+    foreach my $val (@ainit_inmass_sess) 
+    {
 	$e->send("$val\r");
 	sleep(1);
     }
@@ -132,56 +133,44 @@ sub einmass_run  {
     my $pattern = shift;
     my $itemid  = shift; 
     my $timeout = 3;
-#    my $success = $e->expect($timeout,  $pattern);
     my @exp_stat = $e->expect($timeout, '-re',  $pattern);
-
+    my $success =  sprintf "%d", $exp_stat[0];
 
     print($fhdebug Dumper(\@exp_stat));
-#    print($fhdebug @exp_stat[0]);
     print($fhdebug "\n\nPattern: $pattern \n\n");
     print($fhdebug "\n\nItemID: $itemid \n\n");
     print($myoutput "\nBefore: @{[$e->before()]} \n\n");
     print($myoutput "\nMatched: @{[$exp_stat[2]]} \n\n");
     print($myoutput "\nAfter: @{[$e->after()]} \n\n");
     print($myoutput "\n\nPattern: $pattern \n\n");
-
-    if ($exp_stat[0] == 1) {
-
+    
+    if ($success == 1) 
+    {
 	print($fhdebug "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
 	print($myoutput "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
-
     }
-    else {
+    else
+    {
 	print($fhdebug "\n\nSuccess: 0 \n\n");
 	print($myoutput "\n\nSuccess: 0 \n\n");
-#	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
-
+	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
     }
-#MAKE SURE TO DIEEEEEEE IF NOT PASS TEST
-#    my $nosuccess = !defined($success);
-#    if ($success != 1) {
-	
-#	die("\nPatterns: $pattern\n Success: $success\n ");
-
-#    }
-
-    $e;
 }
 
 
-#----------------
-sub einmass_enter {
 #Goes to correct path in inmass, enters in company number, password, then goes to desired choice
 #Parameters: (action_template, expect_obj, hash_containing_company_number_and_company_value)
 #returns expect object
-
-    
+#----------------
+sub einmass_enter {
+ 
     my $template = shift;
     my $e = shift;
     my %args = @_;
     
 
-    foreach my $key (keys %args) {
+    foreach my $key (keys %args) 
+    {
 	my $val = $args{$key};
 	$template =~ s/$key/$val/g;
     }
@@ -191,14 +180,11 @@ sub einmass_enter {
     $e 
 }
 
-
-#----------------
-sub einmass_iterator {
 #Iterates through each item and enters desired information according to action_template
 #Parameters: (a hash contatin template, expect_obj, array_of_hashes_of_items, row_for_regex, column_for_regex)
 #returns expect object
-  
-
+#----------------
+sub einmass_iterator {
 
     my %args  = @_;
     my $templ = $args{'template'};
@@ -209,9 +195,6 @@ sub einmass_iterator {
 
   
     my ($fh1, $fh2);
-
-#    $e->notransfer(1);
-#    $e->exp_internal(1);
     my $i = 0;
     my $prev_value;
     
@@ -248,7 +231,7 @@ sub einmass_iterator {
 	    
 	    if ($digitval[0] != $prev_val[0]) {
 		$key = '<<VALUE>>';
-		$val = "$digitval[0]($digitval[1]($digitval[2])?)?";
+		$val = sprintf "%s(%s(%s)?)?", $digitval[0], $digitval[1], $digitval[2];
 		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
 		$pscrpt =~ s/<<ROW>>/$row/ig;
 		$pscrpt =~ s/<<COLUMN>>/$col/ig;
@@ -256,7 +239,8 @@ sub einmass_iterator {
 	    }
 	    elsif ($digitval[1] != $prev_val[1]) {
 		$key = '<<VALUE2>>';
-		$val = "$digitval[1]($digitval[2])?";
+		$val = sprintf "%s(%s)?", $digitval[1], $digitval[2];
+#		$val = "$digitval[1]($digitval[2])?";
 		my $ncol = $col + 1;
 		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
 	        $pscrpt =~ s/<<ROW>>/$row/ig;
@@ -265,7 +249,8 @@ sub einmass_iterator {
 	    }
 	    elsif ($digitval[2] != $prev_val[2]) {
 		$key = '<<VALUE2>>';
-		$val = "$digitval[2]";
+		$val = sprintf "%s", $digitval[2];
+#		$val = "$digitval[2]";
 		my $nncol = $col + 2;
 		$pscrpt = '(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)|(RECORD\s+CHANGED)';
 	        $pscrpt =~ s/<<ROW>>/$row/ig;
@@ -286,7 +271,6 @@ sub einmass_iterator {
 	}
 
 	$prev_value = $value;
-
       	$e->clear_accum();
 	$e->send( $tscrpt );
 	einmass_run( $e, $pscrpt, $itemid);
@@ -295,12 +279,11 @@ sub einmass_iterator {
     $e;
 }
 
-
-#----------------
-sub einmass_exit {
 #exits out of inmass and expect
 #Parameters: ( template, expect_obj)
 #returns expect object
+#----------------
+sub einmass_exit {
     my $template = shift;
     my $e = shift;
     my $timeout = 1;
@@ -308,11 +291,13 @@ sub einmass_exit {
     $e->send($template);
     $e->do_soft_close();
 #    $e->expect($timeout, 'eof');
-    return  1;
+    $e;
 
 }
 
-	
+
+#Written so can test
+sub main {	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
 my $row = ROW();
 my $column = COLUMN();
@@ -357,7 +342,8 @@ my %iterator_hash = ( template      => $tmpl1,
 einmass_enter($tmpl0, $e, %thash0);
 einmass_iterator(%iterator_hash);
 einmass_exit($tmpl2, $e);
-
 1;
+}
+main();
 
 
