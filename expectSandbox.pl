@@ -2,11 +2,8 @@
 use Expect;
 use Data::Dumper;
 use strict;
-#use warnings;
+use warnings;
 use constant DEBUG => 1;
-use constant ITEM_VALUE_A =>int(rand(1000));
-use constant ITEM_VALUE_B =>int(rand(1000));
-use constant ITEM_VALUE_C => int(rand(1000));
 use constant INMASS_SERVER_UNC =>   '\\inmass.ecm.qual-pro.com';
 use constant INMASS_SERVER_UNC_DEBUG =>  'C:\opt\qp\inmass\200411\bindata';
 use constant FILE_SERVER_UNC_PRODUCTION  => '\\\\file.corp.qual-pro.com';
@@ -37,24 +34,15 @@ M:
 INMASS
 END_STRING
     
+#variables need for debugging
 
 our ($fhdebug, $myoutput);
 open($fhdebug, ">>debug.txt");
 open($myoutput, ">>output.txt");
 
-#---------
-sub bprint  {
-#---------
-    my $str   = shift;
-    my @chars = split //, $str;
 
-    foreach my $c (@chars)
-    {
-	printf "%x", ord $c;
-    }
-    print "\n";
-}
-
+#Prints hex and char representation of a file delimeted by '|'
+#used for debugging
 #---------
 sub hcprint  {
 #---------
@@ -75,10 +63,9 @@ sub hcprint  {
     print "\n";
 }
 
-
-sub file_to_string {
 #the parameter is a path to a file inclusive of file
 #returns a string representation of the file
+sub file_to_string {
     my ($fh0, $file, $filestring, $filesize);
     $file = shift;
     open($fh0, $file) or die ("Can't open $file file: $!\n");
@@ -88,34 +75,13 @@ sub file_to_string {
     $filestring
 }
 
-sub check_success { 
-#checks to see if a command was successful
-#Parameters: (log_file, an_expect_statement, a_name_for_the_command, the_actual_command)
-#returns an error if a command was not successful
 
-    my $e = shift;
-    my $success = shift;
-    my $scommand = shift;
-    my $command = shift;
-    my $log = shift;
-
-    if ($success == 1) {
-	print $log "\nSuccessfully sent $scommand: $command\n";
-
-    }
-    else {
-
-	die("\nERROR occured with sending $scommand: $command\n");
-    }
-}
-
-
-#----------------
-sub einmass_init {
 #telnets into host computer and logs into inmass
 #Parameters: (host_name, host_password, ipaddress_of_host_computer, commands_needed_to_get_into_inmass, hash_of_userprofile, *log)
 #The log parameter is optional if not set will default to "edumplog.txt"
 #returns expect object
+#----------------
+sub einmass_init {
 
     my $host = shift;
     my $hpass = shift;
@@ -175,14 +141,14 @@ sub einmass_run  {
     print($fhdebug "\n\nPattern: $pattern \n\n");
     print($fhdebug "\n\nItemID: $itemid \n\n");
     print($myoutput "\nBefore: @{[$e->before()]} \n\n");
-    print($myoutput "\nMatched: @{[@exp_stat[2]]} \n\n");
+    print($myoutput "\nMatched: @{[$exp_stat[2]]} \n\n");
     print($myoutput "\nAfter: @{[$e->after()]} \n\n");
     print($myoutput "\n\nPattern: $pattern \n\n");
 
-    if (@exp_stat[0] == 1) {
+    if ($exp_stat[0] == 1) {
 
-	print($fhdebug "\n\nSuccess: @{[@exp_stat[0]]} \n\n");
-	print($myoutput "\n\nSuccess: @{[@exp_stat[0]]} \n\n");
+	print($fhdebug "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
+	print($myoutput "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
 
     }
     else {
@@ -350,9 +316,9 @@ sub einmass_exit {
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
 my $row = ROW();
 my $column = COLUMN();
-my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => ITEM_VALUE_A()  },
-		{ '<<ITEMID>>' => '00023469-501', '<<VALUE>>' => ITEM_VALUE_B()  },
-		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => ITEM_VALUE_C()  },
+my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00023469-501', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022481-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022788-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00021668-501', '<<VALUE>>' => int(rand(1000)) },
