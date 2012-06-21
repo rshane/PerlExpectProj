@@ -1,0 +1,63 @@
+< 0x00000: ff fd 25 ff  fb 01 ff fb  03 ff fd 27  ff fd 1f ff  ÿý%ÿû.ÿû.ÿý'ÿý.ÿ
+< 0x00010: fd 00 ff fb  00                                     ý.ÿû.
+
+> 0x00000: ff fc 25 ff  fd 01 ff fd  03 ff fc 27  ff fc 1f ff  ÿü%ÿý.ÿý.ÿü'ÿü.ÿ
+> 0x00010: fc 00 ff fe  00                                     ü.ÿþ.
+
+< 0x00000: 57 65 6c 63  6f 6d 65 20  74 6f 20 4d  69 63 72 6f  Welcome to Micro
+< 0x00010: 73 6f 66 74  20 54 65 6c  6e 65 74 20  53 65 72 76  soft Telnet Serv
+< 0x00020: 69 63 65 20  0d 0a 0a 0d  6c 6f 67 69  6e 3a 20     ice ....login: 
+
+> 0x00000: 42 6f 62 62  79 0d 0a                               Bobby..
+
+< 0x00000: 42 6f 62 62  79 0a 0d 70  61 73 73 77  6f 72 64 3a  Bobby..password:
+< 0x00010: 20                                                   
+
+> 0x00000: 77 69 6e 64  6f 77 73 0d  0a                        windows..
+
+< 0x00000: ff fd 18                                            ÿý.
+
+> 0x00000: ff fc 18                                            ÿü.
+
+< 0x00000: 0d 0a 0d 0a  2a 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ....*===========
+< 0x00010: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x00020: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x00030: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x00040: 3d 3d 3d 3d  0d 0a 57 65  6c 63 6f 6d  65 20 74 6f  ====..Welcome to
+< 0x00050: 20 4d 69 63  72 6f 73 6f  66 74 20 54  65 6c 6e 65   Microsoft Telne
+< 0x00060: 74 20 53 65  72 76 65 72  2e 0d 0a 2a  3d 3d 3d 3d  t Server...*====
+< 0x00070: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x00080: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x00090: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 3d  ================
+< 0x000a0: 3d 3d 3d 3d  3d 3d 3d 3d  3d 3d 3d 0d  0a 43 3a 5c  ===========..C:\
+< 0x000b0: 44 6f 63 75  6d 65 6e 74  73 20 61 6e  64 20 53 65  Documents and Se
+< 0x000c0: 74 74 69 6e  67 73 5c 42  6f 62 62 79  3e           ttings\Bobby>
+
+> 0x00000: 63 64 20 43  3a 5c 44 6f  63 75 6d 65  6e 74 73 20  cd C:\Documents 
+> 0x00010: 61 6e 64 20  53 65 74 74  69 6e 67 73  5c 42 6f 62  and Settings\Bob
+> 0x00020: 62 79 0d 0a                                         by..
+
+< 0x00000: 63 64 20 43  3a 5c 44 6f  63 75 6d 65  6e 74 73 20  cd C:\Documents 
+< 0x00010: 61 6e 64 20  53 65 74 74  69 6e 67 73  5c 42 6f 62  and Settings\Bob
+< 0x00020: 62 79 0d 0a  0d 0a 43 3a  5c 44 6f 63  75 6d 65 6e  by....C:\Documen
+< 0x00030: 74 73 20 61  6e 64 20 53  65 74 74 69  6e 67 73 5c  ts and Settings\
+< 0x00040: 42 6f 62 62  79 3e                                  Bobby>
+
+> 0x00000: 74 65 73 74  2e 62 61 74  0d 0a                     test.bat..
+
+< 0x00000: 74 65 73 74  2e 62 61 74  0d 0a                     test.bat..
+
+< 0x00000: 54 68 65 20  63 6f 6d 6d  61 6e 64 20  63 6f 6d 70  The command comp
+< 0x00010: 6c 65 74 65  64 20 73 75  63 63 65 73  73 66 75 6c  leted successful
+< 0x00020: 6c 79 2e 0d  0a 0d 0a 44  6f 6e 65 2e  0d 0a 43 3a  ly.....Done...C:
+< 0x00030: 5c 44 6f 63  75 6d 65 6e  74 73 20 61  6e 64 20 53  \Documents and S
+< 0x00040: 65 74 74 69  6e 67 73 5c  42 6f 62 62  79 3e        ettings\Bobby>
+
+> 0x00000: 6d 3a 0d 0a                                         m:..
+
+< 0x00000: 6d 3a 0d 0a  0d 0a 4d 3a  5c 3e                     m:....M:\>
+
+> 0x00000: 69 6e 6d 61  73 73 0d 00                            inmass..
+
+< 0x00000: 69 6e 6d 61  73 73 0d 00                            inmass..
+

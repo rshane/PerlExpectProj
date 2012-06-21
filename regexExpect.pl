@@ -66,6 +66,7 @@ sub hcprint  {
 
 #the parameter is a path to a file inclusive of file
 #returns a string representation of the file
+#-----------------
 sub file_to_string {
     my ($fh0, $file, $filestring, $filesize);
     $file = shift;
@@ -137,8 +138,6 @@ sub einmass_run  {
     my @exp_stat = $e->expect($timeout, '-re',  $pattern);
     my $success =  sprintf "%d", $exp_stat[0];
 
-    print($fhdebug Dumper(\@exp_stat));
-    print($fhdebug "\n\nPattern: $pattern \n\n");
     print($fhdebug "\n\nItemID: $itemid \n\n");
     print($myoutput "\nBefore: @{[$e->before()]} \n\n");
     print($myoutput "\nMatched: @{[$exp_stat[2]]} \n\n");
@@ -168,7 +167,7 @@ sub einmass_enter {
     my $template = shift;
     my $e = shift;
     my %args = @_;
-    my $timeout = 10;
+    
 
     foreach my $key (keys %args) 
     {
@@ -177,20 +176,108 @@ sub einmass_enter {
     }
     
     $e->send($template);
-    sleep(1);
-    $e->expect($timeout, '-re', '\*\s+Inventory File Maintenance\s+\*');
-    sleep(3);
-    my @term = ``;
+
     $e 
 }
 
 #Iterates through each item and enters desired information according to action_template
 #Parameters: (a hash contatin template, expect_obj, array_of_hashes_of_items, row_for_regex, column_for_regex)
 #returns expect object
- #----------------
+#----------------
 sub einmass_iterator {
 
+    my %args  = @_;
+    my $templ = $args{'template'};
+    my $e     = $args{'expect_object'};
+    my $params = $args{'items_array'};
+    my $row = $args{'row'};
+    my $col = $args{'column'};
+
+  
+    my ($fh1, $fh2);
+    my $i = 0;
+    my $prev_value;
+    
+    foreach my $hash_item ( @$params )
+    {
+	my $tscrpt = $templ;
+	my $pscrpt;
+	my ($key, $val);
+	my $itemid = $hash_item->{'<<ITEMID>>'};
+	my $value = $hash_item->{'<<VALUE>>'};
+
+	my $key_item  = '<<ITEMID>>';
+	my $key_value = '<<VALUE>>';
+	$tscrpt =~ s/$key_item/$itemid/ig;
+	$tscrpt =~ s/$key_value/$value/ig;
+
+	if ($i == 0)
+	{
+	    $key = '<<VALUE>>';
+	    $val = $value;
+	    $pscrpt = '(RECORD\s+CHANGED)|(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+${value})';
+	    $pscrpt =~ s/<<ROW>>/$row/ig;
+	    $pscrpt =~ s/<<COLUMN>>/$col/ig;
+	    $pscrpt =~ s/$key/$val/ig;
+	    $i++;
+	}
+
+	else 
+	{
+	    my @digitval = split //, $value;
+	    my @prev_val = split //, $prev_value;
+	    
+	    if ($digitval[0] != $prev_val[0]) {
+		$key = '<<VALUE>>';
+		$val = sprintf "%s(%s(%s)?)?", $digitval[0], $digitval[1], $digitval[2];
+		$pscrpt = '(RECORD\s+CHANGED)|(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+$value)';
+		$pscrpt =~ s/<<ROW>>/$row/ig;
+		$pscrpt =~ s/<<COLUMN>>/$col/ig;
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    elsif ($digitval[1] != $prev_val[1]) {
+		$key = '<<VALUE2>>';
+		$val = sprintf "%s(%s)?", $digitval[1], $digitval[2];
+#		$val = "$digitval[1]($digitval[2])?";
+		my $ncol = $col + 1;
+		$pscrpt = '(RECORD\s+CHANGED)|(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$ncol/ig;
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    elsif ($digitval[2] != $prev_val[2]) {
+		$key = '<<VALUE2>>';
+		$val = sprintf "%s", $digitval[2];
+#		$val = "$digitval[2]";
+		my $nncol = $col + 2;
+		$pscrpt = '(RECORD\s+CHANGED)|(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE2>>)|(Lead\s+Time\s+$value)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$nncol/ig;
+
+		$pscrpt =~ s/$key/$val/ig;
+	    }
+	    else 
+	    {
+
+		$key = '<<VALUE>>';
+		$val = $value;
+		$pscrpt = '(RECORD\s+CHANGED)|(\e\[<<ROW>>;<<COLUMN>>H(\e\[(1|37|44)m)*<<VALUE>>)|(Lead\s+Time\s+$value)';
+	        $pscrpt =~ s/<<ROW>>/$row/ig;
+	        $pscrpt =~ s/<<COLUMN>>/$col/ig;
+	        $pscrpt =~ s/$key/$value/ig;
+	    }
+	}
+
+	$prev_value = $value;
+      	$e->clear_accum();
+	$e->send( $tscrpt );
+	einmass_run( $e, $pscrpt, $itemid);
+
+    }
+    close($fhdebug);
+    $e;
 }
+
 #exits out of inmass and expect
 #Parameters: ( template, expect_obj)
 #returns expect object
@@ -253,7 +340,7 @@ my %iterator_hash = ( template      => $tmpl1,
 
 einmass_enter($tmpl0, $e, %thash0);
 einmass_iterator(%iterator_hash);
-#einmass_exit($tmpl2, $e);
+einmass_exit($tmpl2, $e);
 1;
 }
 main();

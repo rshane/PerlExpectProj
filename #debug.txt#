@@ -1,200 +1,120 @@
 $VAR1 = [
           1,
           undef,
-          '[11;22H666',
-          '[1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\\Documents and Settings\\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\\opt\\qp\\inmass\\200411\\bindata[6;1HC:\\Documents and Settings\\Bobby>NET USE N: \\\\file.corp.qual-pro.com\\Users\\rjshan[7;1He\\inmass\\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\\Documents and Settings\\Bobby>NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\\Documents and Settings\\Bobby>SUBST O: C:\\Temp[18;1HC:\\Documents and Settings\\Bobby>M:[20;1HM:\\>INMASS[21;1H[1;1H[1m[37m[44mÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»[2;1Hº                                                                              º[3;1Hº                                                                              º[4;1Hº                                                                              º[5;1Hº                                INMASS/MRP (r)                                º[6;1Hº                   Integrated Manufacturing Software Series                   º[7;1Hº      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       º[8;1Hº                                                                              º[9;1Hº                     Registered To: QUAL-PRO CORPORATION                      º[10;1Hº                                                                              º[11;1Hº                              [37m[46mÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»[37m[44m                             º[12;1Hº                              [37m[46mº[33m[46m Enter password  [37m[46mº[37m[44m                             º[13;1Hº                              [37m[46mº[33m[46m    [22m[30m[47m****      [1m[33m[46m   [37m[46mº[37m[44m                             º[14;1Hº                              [37m[46mÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼[37m[44m                             º[15;1Hº                                                                              º[16;1Hº                                                                              º[17;1Hº                                                                              º[18;1Hº                                                                              º[19;1Hº                                                                              º[20;1Hº                                                                              º[21;1Hº                                                                              º[22;1Hº                                                                              º[23;1Hº                                                                              º[24;1Hº                                                                              º[25;1HÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼[13;41H[1;1H  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time
-          '[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+            '[1;1H',
+          '',
+          '*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\\Documents and Settings\\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*6(6(6)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*66)|(\e\[11;24H(\e\[(1|37|44)m)*6)|(Lead\s+Time\s+6(6(6)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00023389-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          'RECORD CHANGED',
-          '[1;7H[1m[31m[40m',
-          '[3;18H[22m[30m[47m00023469-501   [4;28H[1m[37m[44m469-501 REV 1 DRAGON BATT CNTRL ASSY    [5;18H                                       [6;64H1 [11;22H231[16;65H1/13[24;56H0 [3;18H',
+          '[6;1H',
+          'SUBST M: C:\\opt\\qp\\inmass\\200411\\bindata',
+          'C:\\Documents and Settings\\Bobby>NET USE N: \\\\file.corp.qual-pro.com\\Users\\rjshan[7;1He\\inmass\\reports /user:rjshane "RJShane--"[8;1HThe command completed successfully.[11;1HC:\\Documents and Settings\\Bobby>NET USE V: \\\\inmass.ecm.qual-pro.com\\var /user:r[12;1Hjshane "Qual-ProPassword4Inmass"[13;1HThe command completed successfully.[16;1HC:\\Documents and Settings\\Bobby>SUBST O: C:\\Temp[18;1HC:\\Documents and Settings\\Bobby>M:[20;1HM:\\>INMASS[21;1H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(3(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*31)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+2(3(1)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00023469-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;23H62',
-          '[3;22H[22m[30m[47m2788-503[4;26H[1m[37m[44m00022788-503 REV A7+,PWA,CRYPTO PM    [6;64H ',
-          '[16;65H8/04[21;22H     [3;18H',
+          '[1;1H',
+          '',
+          '[1m[37m[44mÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»[2;1Hº                                                                              º[3;1Hº                                                                              º[4;1Hº                                                                              º[5;1Hº                                INMASS/MRP (r)                                º[6;1Hº                   Integrated Manufacturing Software Series                   º[7;1Hº      Copyright 1992-2004 The Stratford Group, Inc. All Rights Reserved       º[8;1Hº                                                                              º[9;1Hº                     Registered To: QUAL-PRO CORPORATION                      º[10;1Hº                                                                              º[11;1Hº                              [37m[46mÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»[37m[44m                             º[12;1Hº                              [37',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(6(2)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*62)|(\e\[11;24H(\e\[(1|37|44)m)*2)|(Lead\s+Time\s+2(6(2)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00022788-503 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;22H704',
-          '[1;7H              [3;18H00022481-501   [4;26H22481-501 REV A3 CUCU CCP PCB ASSY[5;18HC to Change, D to Delete, S to Skip   C[6;64HA2',
-          '[16;65H4/27[21;22HKELLY[24;56H[22m[30m[47m0-[24;56H',
+          '[13;1H',
+          'm[46mº[33m[46m Enter password  [37m[46mº[37m[44m                             º',
+          'º                              [37m[46mº[33m[46m    [22m[30m[47m******    [1m[33m[46m   [37m[46mº[37m[44m                             º[14;1Hº                              [37m[46mÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼[37m[44m                             º[15;1Hº                                                                    ',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*7(0(4)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*04)|(\e\[11;24H(\e\[(1|37|44)m)*4)|(Lead\s+Time\s+7(0(4)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00022481-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          'RECORD CHANGED',
-          '[1;7H[1m[31m[40m',
-          '[3;18H[22m[30m[47m00022788-501   [4;26H[1m[37m[44m00022788-501 REV A4+,PWA,MIL-STD-1553B PM[5;18H                                       [6;65H3[11;22H809[16;65H8/04[21;22H     [24;56H0 [3;18H',
+          '[16;1H',
+          '          º',
+          'º                                                                              º[17;1Hº                                                                              º[18;1Hº                                                                              º[19;1Hº                                                                              º[20;1Hº                                                                              º[21;1Hº                                                                              º[22;1Hº                                                                              º[23;1Hº                                                                              º[24;1Hº                                                                              º[25;1HÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼[13;43H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*8(0(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*09)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+8(0(9)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00022788-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;22H221',
-          '[3;22H[22m[30m[47m166[4;30H[1m[37m[44m1668-501 REV A4 FTV PERSONALITY POSITI[6;65H4',
-          '[16;65H4/17[3;18H',
+          '[1;1H',
+          '',
+          '  b011                                                                          [2;1H************************* Inventory File Maintenance **********************     [3;1H 1. Item        *00023389-501       (Escape to quit)                            [4;1H 2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV             [5;1H        ACTION : C to Change, D to Delete, S to Skip   [22m[30m[47mC[1m[37m[44m                        [6;1H 3. Avg. Cost        0.0000            21. Revision #          A3               [7;1H 4. Std. Cost        0.0000            22. Shrinkage Factor    0.00             [8;1H 5. Stocking Unit    EA                23. Price Level  1                       [9;1H 6. Alt. Unit        EA                    Markup              0.0000           [10;1H 7. Unit Conversion  1.00                  Price               0.000000         [11;1H 8. Lead Time                              Qty Break                            [12;1H 9. ABC Class                          2',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*2(2(1)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*21)|(\e\[11;24H(\e\[(1|37|44)m)*1)|(Lead\s+Time\s+2(2(1)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00021668-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;22H327',
-          '[1;7H              [3;18H00018716-501   [4;29H18716-501 REV B1 ASSY,NETWORK SW PWR SP[5;18HC to Change, D to Delete, S to Skip   C[6;64HB1',
-          '[16;65H5/29[24;56H[22m[30m[47m0-[24;56H',
+          '[13;1H',
+          '4. Multi-Loc                            ',
+          '10. Cycle Count                        25. Warehouse                            [14;1H11. Unit Weight                        26. Location                             [15;1H12. Discount Matrix                    27. Safety Stock                         [16;1H13. A/R, A/P Codes                     28. Last Cycle Date                      [17;1H14. Item Class               ',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*3(2(7)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*27)|(\e\[11;24H(\e\[(1|37|44)m)*7)|(Lead\s+Time\s+3(2(7)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00018716-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          'RECORD CHANGED',
-          '[1;7H[1m[31m[40m',
-          '[3;18H[22m[30m[47m00018609-501   [4;31H[1m[37m[44m609-501 REV B1 ASSY,MAIN BOARD       [5;18H                                       [11;22H149[24;56H0 [3;18H',
+          '[18;1H',
+          '          29. Lot Size                             ',
+          '15. Commodity Code                     30. Min Order Qty                        [19;1H16. Class. Group                       31. Taxable                              [20;1H17. Product Family                     32. (reserved)                           [21;1H18. Planner                            33. Status                               [22;1H19. Buyer                              34. Vendor File Edit                     [23;1H20. Drawing #                          35. History File Edit                    [24;1H[K[25;1H[K[3;30H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*1(4(9)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*49)|(\e\[11;24H(\e\[(1|37|44)m)*9)|(Lead\s+Time\s+1(4(9)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00018609-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;22H570',
-          '[3;22H[22m[30m[47m795[4;30H[1m[37m[44m7959-501 REV A5 PCBA,ROTOMOD BOARD[6;64HA5',
-          '[16;65H6[21;22HKELLY[3;18H',
+          '[1;7H',
+          '',
+          '[31m[40mRECORD CHANGED[3;18H[22m[30m[47m00017959-501   [4;26H[1m[37m[44m00017959-501 REV A5 PCBA,ROTOMOD BOARD    [5;18H                                       [6;65H5[11;22H499[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H06/29/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[24;2HEnter Number to Change (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*5(7(0)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*70)|(\e\[11;24H(\e\[(1|37|44)m)*0)|(Lead\s+Time\s+5(7(0)?)?)|(RECORD\s+CHANGED) 
-
 
 
 ItemID: 00017959-501 
 
-
-
-Success: 1 
-
 $VAR1 = [
           1,
           undef,
-          '[11;22H113',
-          '[1;7H              [3;18H00016126-501   [4;30H6126-501 REV4.10 PCBA,TVC         [5;18HC to Change, D to Delete, S to Skip   C[6;64H4.1',
-          '[16;67H18[21;22H     [24;56H[22m[30m[47m0-[24;56H',
+          '[3;22H',
+          '',
+          '6126[4;30H[1m[37m[44m6126-501 REV4.10 PCBA,TVC         [6;64H4.1[11;23H80[16;67H18[21;22H     [24;56H0 [3;18H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
 
 
-Pattern: (\e\[11;22H(\e\[(1|37|44)m)*1(1(3)?)?)|(\e\[11;23H(\e\[(1|37|44)m)*13)|(\e\[11;24H(\e\[(1|37|44)m)*3)|(Lead\s+Time\s+1(1(3)?)?)|(RECORD\s+CHANGED) 
-
-
-
 ItemID: 00016126-501 
-
-
-
-Success: 1 
 
