@@ -42,7 +42,7 @@ END_STRING
 
 our ($fhdebug, $myoutput);
 open($fhdebug, ">>debug.txt");
-open($myoutput, ">>output.txt");
+
 
 
 #Prints hex and char representation of a file delimeted by '|'
@@ -97,6 +97,7 @@ sub einmass_init {
     my $e = new Expect;
     my $success;
 
+
     $e -> raw_pty(0);
     $logfile = $logfile ? $logfile : LOG();
     $e->log_file("$logfile", "w");
@@ -119,10 +120,9 @@ sub einmass_init {
     foreach my $val (@ainit_inmass_sess) 
     {
 	$e->send("$val\r");
-	sleep(1);
     }
 
-    sleep(1);
+
     $e;
 }
 
@@ -143,20 +143,14 @@ sub einmass_run  {
     print($fhdebug Dumper(\@exp_stat));
     print($fhdebug "\n\nPattern: $pattern \n\n");
     print($fhdebug "\n\nItemID: $itemid \n\n");
-    print($myoutput "\nBefore: @{[$e->before()]} \n\n");
-    print($myoutput "\nMatched: @{[$exp_stat[2]]} \n\n");
-    print($myoutput "\nAfter: @{[$e->after()]} \n\n");
-    print($myoutput "\n\nPattern: $pattern \n\n");
     
     if ($success == 1) 
     {
 	print($fhdebug "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
-	print($myoutput "\n\nSuccess: @{[$exp_stat[0]]} \n\n");
     }
     else
     {
 	print($fhdebug "\n\nSuccess: 0 \n\n");
-	print($myoutput "\n\nSuccess: 0 \n\n");
 	die("Did not find pattern: $pattern in inmass, desired change in inmass may not have happened");
     }
 }
@@ -167,20 +161,28 @@ sub einmass_run  {
 #returns expect object
 #----------------
 sub einmass_enter {
- 
+    my $timeout = 3;
     my $template = shift;
     my $e = shift;
     my %args = @_;
     
+    my $cnum = $args{'<<COMPANYNUMBER>>'};
+    my $pass = $args{'<<PASSWORD>>'};
+#    foreach my $key (keys %args) 
+#    {
+#	my $val = $args{$key};
+#	$template =~ s/$key/$val/g;
+#   }
 
-    foreach my $key (keys %args) 
-    {
-	my $val = $args{$key};
-	$template =~ s/$key/$val/g;
-    }
-    
-    $e->send($template);
-
+#    $e->send($template);
+    $e->expect($timeout, '-re', qr/Select company number/); #put here to fill up the accumulator 
+    $e->send("$cnum\r");
+    $e->expect($timeout, '-re', qr/Enter password/); #put here to fill up the accumulator 
+    $e->send("$pass\r");
+    $e->expect($timeout, '-re', qr/Current Date/); #put here to fill up the accumulator 
+    $e->send("\r");
+    $e->expect($timeout, '-re', qr/Enter your choice/); #put here to fill up the accumulator 
+    $e->send("1\r");
     $e 
 }
 
@@ -196,7 +198,7 @@ sub einmass_iterator {
     my $params = $args{'items_array'};
     my $row = $args{'row'};
     my $col = $args{'column'};
-    my $timeout = 3;
+    my $timeout = 5;
 
   
     my ($fh1, $fh2);
@@ -204,32 +206,56 @@ sub einmass_iterator {
 
     foreach my $hash_item ( @$params )
     {
-	my $tscrpt = $templ;
-	my $pscrpt;
-	my ($key, $val);
-	my $itemid = $hash_item->{'<<ITEMID>>'};
-	my $value = $hash_item->{'<<VALUE>>'};
+    my $hash_item = @$params[0];
+    my $tscrpt = $templ;
+    my $pscrpt;
+    my ($key, $val);
+    my $itemid = $hash_item->{'<<ITEMID>>'};
+    my $value = $hash_item->{'<<VALUE>>'};
+    
+    my $key_item  = '<<ITEMID>>';
+    my $key_value = '<<VALUE>>';
+    
+    $tscrpt =~ s/$key_item/$itemid/ig;
+    $tscrpt =~ s/$key_value/$value/ig;
+    my @tscrpt = split //, $tscrpt;
+ 
+#    input = 1. (^M)
+    my $input    = "1\r";
+    my @exp_stat = $e->expect($timeout, ['-re', qr/Multi User MSDOS Network/, sub{$e->send($input);}]); #put here to fill up the accumulator 
+    print($fhdebug Dumper(\@exp_stat));
 
-	my $key_item  = '<<ITEMID>>';
-	my $key_value = '<<VALUE>>';
-	$tscrpt =~ s/$key_item/$itemid/ig;
-	$tscrpt =~ s/$key_value/$value/ig;
+    $e->clear_accum(); 
+ 
+#    input = itemid. 
+    $input = "$itemid\r";
+    my @exp_stat = $e->expect($timeout, '-re', 'History File Edit', sub {$e->send("$input")});
+    print($fhdebug Dumper(\@exp_stat));
 
-      	$e->clear_accum();
-	$e->send($tscrpt);
-	my @exp_stat = $e->expect($timeout);#, '-re', '\e\[[\d;]+'); #'\e\[/d+;/d+H'
-	print($fhdebug Dumper(\@exp_stat));
-	print($fhdebug "\n\nItemID: $itemid \n\n");
-	my $exp = $exp_stat[3];
-	my @exp = split qw/\^\[/, $exp;
-	print($myoutput $exp);
-	print($myoutput "\n\nItemID: $itemid \n\n");
-	foreach my $char (@exp)
-	{
-	    
-	}
 
-    }
+#    input = c. (^M)
+    $input = "C\r";
+    @exp_stat = $e->expect($timeout, '-re', 'C to Change', sub {$e->send("$input")});
+    print($fhdebug Dumper(\@exp_stat));
+
+
+#    input = 8. (^M)
+    $input = "8\r";
+    @exp_stat = $e->expect($timeout, '-re', 'Enter Number to Change', sub {$e->send("$input")});
+    print($fhdebug Dumper(\@exp_stat));
+
+
+#    input = $value.. (^M^M) 
+    $input = "$value\r\r";
+    @exp_stat = $e->expect($timeout, ['-re', '\e\[.(.(.)?)?;.*H',  sub {$e->send("$input")}]);
+    print($fhdebug Dumper(\@exp_stat));
+
+#    input = . (ESC)
+    $input = "\e";
+    @exp_stat = $e->expect($timeout, ['-re', 'RECORD CHANGED', sub {$e->send("$input")}]);
+    print($fhdebug Dumper(\@exp_stat));
+
+   }
     close($fhdebug);
     $e;
 }
@@ -258,9 +284,9 @@ my $row = ROW();
 my $column = COLUMN();
 my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00023469-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022481-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022788-501', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00021668-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00018716-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00018609-501', '<<VALUE>>' => int(rand(1000)) },
@@ -270,12 +296,10 @@ my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => int(rand(1000))
 my $tpath = "@{[PATH()]}@{[SCRIPT()]}";
 my ($sfile, $tmpl0, $tmpl1, $tmpl2);
 $sfile = file_to_string($tpath);
-$sfile =~ /<<ITEMID>>.c.8.<<VALUE>>.99../;
+$sfile =~ /1.<<ITEMID>>.c.8.<<VALUE>>.../;
 $tmpl0 = substr($sfile, 0, $-[0]);
 $tmpl1 = substr($sfile, $-[$#-] ,$+[$#-] - $-[$#-] ); 
 $tmpl2 = substr($sfile, $+[$#+]);
-hcprint $tmpl2;
-
 
 my ($host, $hpass, $init_inmass_sess, $ipadd, $path, $spath, $user, $userpass);
 $host = HOST();
@@ -289,15 +313,15 @@ $init_inmass_sess = INIT_INMASS_SESSION();
 my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 
 
-#my $e = einmass_init($host, $hpass, $ipadd, \%userprofile); 
+my $e = einmass_init($host, $hpass, $ipadd, \%userprofile); 
 my %iterator_hash = ( template      => $tmpl1, 
-#		      expect_object => $e, 
+		      expect_object => $e, 
 		      items_array   => \@tarray1,
 		      row           => $row,
 		      column        => $column);
 
-#einmass_enter($tmpl0, $e, %thash0);
-#einmass_iterator(%iterator_hash);
+einmass_enter($tmpl0, $e, %thash0);
+einmass_iterator(%iterator_hash);
 #einmass_exit($tmpl2, $e);
 1;
 }
