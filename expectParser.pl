@@ -121,8 +121,7 @@ sub einmass_init {
     {
 	$e->send("$val\r");
     }
-
-
+    sleep(1);
     $e;
 }
 
@@ -175,14 +174,34 @@ sub einmass_enter {
 #   }
 
 #    $e->send($template);
-    $e->expect($timeout, '-re', qr/Select company number/); #put here to fill up the accumulator 
-    $e->send("$cnum\r");
-    $e->expect($timeout, '-re', qr/Enter password/); #put here to fill up the accumulator 
-    $e->send("$pass\r");
-    $e->expect($timeout, '-re', qr/Current Date/); #put here to fill up the accumulator 
-    $e->send("\r");
-    $e->expect($timeout, '-re', qr/Enter your choice/); #put here to fill up the accumulator 
-    $e->send("1\r");
+    my $input = "$cnum\r";
+#    my @exp_stat = $e->expect($timeout, '-re', 'Select company number', sub {$e->send("$input")});
+#    print($fhdebug Dumper(\@exp_stat));
+#    print($fhdebug "\n Input: $input \n");
+#    $e->clear_accum(); 
+    $e->send($input);
+
+    $input = "$pass\r";
+#    my    @exp_stat = $e->expect($timeout, '-re', 'Enter password', sub {$e->send("$input")});
+#    print($fhdebug Dumper(\@exp_stat));
+#    print($fhdebug "\n Input: $input \n");
+#    $e->clear_accum(); 
+    $e->send($input);
+
+    $input = "\r";
+#    @exp_stat = $e->expect($timeout, '-re', 'Current Date', sub {$e->send("$input")});
+#    print($fhdebug Dumper(\@exp_stat));
+#    print($fhdebug "\n Input: $input \n");
+#    $e->clear_accum(); 
+    $e->send($input);
+
+    $input = "1\r";
+#    @exp_stat = $e->expect($timeout, '-re', 'Enter your choice', sub {$e->send("$input")});
+#    print($fhdebug Dumper(\@exp_stat));
+#    print($fhdebug "\n Input: $input \n");
+#    $e->clear_accum(); 
+    $e->send($input);
+
     $e 
 }
 
@@ -196,66 +215,81 @@ sub einmass_iterator {
     my $templ = $args{'template'};
     my $e     = $args{'expect_object'};
     my $params = $args{'items_array'};
-    my $row = $args{'row'};
-    my $col = $args{'column'};
-    my $timeout = 5;
-
+    my $notFound;
+    open($notFound, ">>ItemsNotFound.txt");
+    my $timeout = 3;
   
+
     my ($fh1, $fh2);
     my $i = 0;
 
     foreach my $hash_item ( @$params )
     {
-    my $hash_item = @$params[0];
-    my $tscrpt = $templ;
-    my $pscrpt;
-    my ($key, $val);
-    my $itemid = $hash_item->{'<<ITEMID>>'};
-    my $value = $hash_item->{'<<VALUE>>'};
-    
-    my $key_item  = '<<ITEMID>>';
-    my $key_value = '<<VALUE>>';
-    
-    $tscrpt =~ s/$key_item/$itemid/ig;
-    $tscrpt =~ s/$key_value/$value/ig;
-    my @tscrpt = split //, $tscrpt;
- 
+	my $tscrpt = $templ;
+	my $pscrpt;
+	my ($key, $val);
+	my $itemid = $hash_item->{'<<ITEMID>>'};
+	my $value = $hash_item->{'<<VALUE>>'};
+	
+	my $key_item  = '<<ITEMID>>';
+	my $key_value = '<<VALUE>>';
+	
+	$tscrpt =~ s/$key_item/$itemid/ig;
+	$tscrpt =~ s/$key_value/$value/ig;
+	my @tscrpt = split //, $tscrpt;
+	
 #    input = 1. (^M)
-    my $input    = "1\r";
-    my @exp_stat = $e->expect($timeout, ['-re', qr/Multi User MSDOS Network/, sub{$e->send($input);}]); #put here to fill up the accumulator 
-    print($fhdebug Dumper(\@exp_stat));
-
-    $e->clear_accum(); 
- 
+	my $input    = "1\r";
+	my @exp_stat = $e->expect($timeout, ['-re', qr/Inventory Control/, sub{$e->send($input);}]); #put here to fill up the accumulator 
+	print($fhdebug Dumper(\@exp_stat));
+	print($fhdebug "\n Input: $input \n");
+	$e->clear_accum(); 
+	
 #    input = itemid. 
-    $input = "$itemid\r";
-    my @exp_stat = $e->expect($timeout, '-re', 'History File Edit', sub {$e->send("$input")});
-    print($fhdebug Dumper(\@exp_stat));
-
+	$input = "$itemid\r";
+	@exp_stat = $e->expect($timeout, '-re', 'Description', sub {$e->send("$input")});
+	print($fhdebug Dumper(\@exp_stat));
+	print($fhdebug "\n Input: $input \n");
+	$e->clear_accum(); 
 
 #    input = c. (^M)
-    $input = "C\r";
-    @exp_stat = $e->expect($timeout, '-re', 'C to Change', sub {$e->send("$input")});
-    print($fhdebug Dumper(\@exp_stat));
+	$input = "C\r";
+	my $pattern = '((\e\[3;18H(\e\[(1|37|44)m)*)|(Item\s+\*)|(\e\[47m))<<ITEMID>>';
+	$pattern =~ s/<<ITEMID>>/$itemid/ig;
+	@exp_stat = $e->expect($timeout, '-re', $pattern);
+	my $after  = $e->after();
+	my $before = $e->before();
+	print($fhdebug Dumper(\@exp_stat));
+	print($fhdebug "\n Input: $input \n");
+	print($fhdebug "Before: $before\n ");
+	if ($before =~ m/ITEM NOT FOUND/ig) {
+	    print($notFound "The following item was not found: $itemid\n");
+	    $e->send("S\r");
+	    sleep(1);
+	    $e->clear_accum(); 
+	    $e->send("\e");
+	    $e->clear_accum(); 
+	}
+	else {
+	    $e->send("$input");
 
+	    $e->clear_accum(); 
 
-#    input = 8. (^M)
-    $input = "8\r";
-    @exp_stat = $e->expect($timeout, '-re', 'Enter Number to Change', sub {$e->send("$input")});
-    print($fhdebug Dumper(\@exp_stat));
-
-
-#    input = $value.. (^M^M) 
-    $input = "$value\r\r";
-    @exp_stat = $e->expect($timeout, ['-re', '\e\[.(.(.)?)?;.*H',  sub {$e->send("$input")}]);
-    print($fhdebug Dumper(\@exp_stat));
+#    input = 8. (^M) $value.. (^M^M) 
+	    $input = "8\r$value\r\r";
+	    @exp_stat = $e->expect($timeout, '-re', 'Enter Number to Change', sub {$e->send("$input")});
+	    print($fhdebug Dumper(\@exp_stat));
+	    print($fhdebug "\n Input: $input \n");
+	    $e->clear_accum(); 
 
 #    input = . (ESC)
-    $input = "\e";
-    @exp_stat = $e->expect($timeout, ['-re', 'RECORD CHANGED', sub {$e->send("$input")}]);
-    print($fhdebug Dumper(\@exp_stat));
-
-   }
+	    $input = "\e";
+	    @exp_stat = $e->expect($timeout, ['-re','\e\[1;7H(\e\[(1|31|40)m)*RECORD CHANGED', sub {$e->send("$input")}]);
+	    print($fhdebug Dumper(\@exp_stat));
+	    print($fhdebug "\n Input: $input \n");
+	    $e->clear_accum(); 
+	}
+    }
     close($fhdebug);
     $e;
 }
@@ -280,16 +314,14 @@ sub einmass_exit {
 #Written so can test
 sub main {	
 my %thash0 = ('<<COMPANYNUMBER>>' => CNUM(), '<<PASSWORD>>' => PASS() );
-my $row = ROW();
-my $column = COLUMN();
 my @tarray1 = ( { '<<ITEMID>>' => '00023389-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00023469-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022481-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00022788-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00022788-503', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00021668-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00018716-501', '<<VALUE>>' => int(rand(1000)) },
-		{ '<<ITEMID>>' => '00018609-501', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00022788-503ABC', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00021668-501ABC', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00018716-501ABC', '<<VALUE>>' => int(rand(1000)) },
+		{ '<<ITEMID>>' => '00018609-501ABC', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00017959-501', '<<VALUE>>' => int(rand(1000)) },
 		{ '<<ITEMID>>' => '00016126-501', '<<VALUE>>' => int(rand(1000)) }, );
 
@@ -316,13 +348,11 @@ my %userprofile = ('<<USER>>' => $user, '<<PASSWORD>>' => $userpass);
 my $e = einmass_init($host, $hpass, $ipadd, \%userprofile); 
 my %iterator_hash = ( template      => $tmpl1, 
 		      expect_object => $e, 
-		      items_array   => \@tarray1,
-		      row           => $row,
-		      column        => $column);
+		      items_array   => \@tarray1);
 
 einmass_enter($tmpl0, $e, %thash0);
 einmass_iterator(%iterator_hash);
-#einmass_exit($tmpl2, $e);
+einmass_exit($tmpl2, $e);
 1;
 }
 main();

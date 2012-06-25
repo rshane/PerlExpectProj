@@ -1,120 +1,500 @@
-$VAR1 = [
+VAR1 = [
+          1,
           undef,
-          '1:TIMEOUT',
-          undef,
-          '[1;1H*===============================================================                [2;1HWelcome to Microsoft Telnet Server.                                             [3;1H*===============================================================                [4;1HC:\\Documents and Settings\\Bobby>                                                [5;1H[K[6;1H[K[7;1H[K[8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H[K[21;1H[K[22;1H[K[23;1H[K[24;1H[K[25;1H[K[4;33HSUBST M: C:\\opt\\qp\\inmass\\200411\\bindata[6;1HC:\\Documents and Settings\\Bobby>NET USE N: \\\\file.corp.qual-pro.com\\Users\\rjshan[7;1He\\inmass\\reports /user:rjshane "RJShane--"[8;1H[1;1H[1m[37m[44m�Ɂ́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́́�[2;1H��                                                                              ��[3;1H��                                                                              ��[4;1H��         [1;5H11[31m[40mRECORD CHANGED[2;1H[37m[44m************************* Inventory File Maintenance **********************[3;2H1. Item        *[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description  CONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;9HACTION :[6;2H3. Avg. Cost        0.0000            21. Revision #          A3[7;2H4. Std. Cost        0.0000            22. Shrinkage Factor    0.00[8;2H5. Stocking Unit    EA                23. Price Level  1[9;2H6. Alt. Unit        EA                    Markup              0.0000[10;2H7. Unit Conversion  1.00                  Price               0.000000[11;2H8. Lead Time        121                   Qty Break[12;2H9. ABC Class        C                 24. Multi-Loc           Y[13;1H10. Cycle Count      0                 25. Warehouse           WP[14;1H11. Unit Weight      0.00              26. Location            WIP[15;1H12. Discount Matrix  0                 27. Safety Stock        0.00[16;1H13. A/R, A/P Codes             PETER             34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [24;2HEnter Number to Change (Press RETURN to Continue)     0[3;18H',
-          undef,
-          undef
+          'Enter your choice',
+          '    [20;40H[22m[30m[47m2[22;21H[1m[37m[44mQual-Pro Corporation[23;13HMon Jun 25, 2012 �� Company 99 �� Console 15  �� Authorized[20;40H[22m[30m[47m1[20;40H[1;1H[1m[37m[44m  b001                                                                          [2;1H     Inventory Control        Version 2.3.021 X61771X                           [3;1H     Copyright (c) 2004 The Stratford Group                                     [4;1H     INMASS-II (r) Integrated Manufacturing Software Series                     [5;1H[K[6;1H      1. Inventory File Maintenance                                             [7;1H      2. Return to INMASS-II (r)                                                [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation                    [21;1H                                        Monday, June 25, 2012                   [22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15                              [23;1H                                        Multi User MSDOS Network      ',
+          bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00023389-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[31m[40m',
-          ' large, [3;18H[37m[44m00023469-501   [4;28H469-501 REV 1 DRAGON BATT CNTRL ASSY    [5;18HC to Change, D to Delete, S to Skip   C[6;64H1 [11;22H477[16;65H1/13[24;56H99[1;7H',
+          'Item        *',
+          '          [24;1H[K[25;1H[K[22;31H[1;5H1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m---------------[1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00023469-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[31m[40mRECORD CHANGED[37m[44m   [3;18H[22m[30m[47m00023469-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00022481-501   [4;27H2481-501 REV A3 CUCU CCP PCB ASSY    [5;18HC to Change, D to Delete, S to Skip   C[6;64HA2[11;22H964[16;65H4/27[24;56H[22m[30m[47m0-[3;18H',
+          '[3;18H00023389-501',
+          '[22m[30m[47m---------------[1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    ',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H4[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
 
-
-ItemID: 00022481-501 
-
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[1m[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00022481-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00022788-501   [4;26H00022788-501 REV A4+,PWA,MIL-STD-1553B PM[5;18HC to Change, D to Delete, S to Skip   C[6;65H3[11;22H37[16;65H8/04[21;22H     [24;56H99[1;37H',
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H4[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00022788-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00022788-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00022788-503   [4;37H3 REV A7+,PWA,CRYPTO PM       [5;18HC to Change, D to Delete, S to Skip   C[6;64H  [11;22H275[24;56H99[1;37H',
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00022788-503 
-
-$VAR1 = [
-          undef,
-          '1:TIMEOUT',
-          undef,
-          '[1;7H[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00022788-503   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[3;22H[22m[30m[47m1668-501[4;30H[1m[37m[44m1668-501 REV A4 FTV PERSONALITY POSITI[6;64HA4[11;22H83[16;65H4/17[24;56H99[3;18H[24;56H0 [3;18H',
-          undef,
-          undef
-        ];
-
-`
-ItemID: 00021668-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00018716-501   [4;29H18716-501 REV B1 ASSY,NETWORK SW PWR SP[5;18HC to Change, D to Delete, S to Skip   C[6;64HB1[11;22H71[16;65H5/29[24;56H99[1;37H',
+          'RECORD CHANGED',
+          '8[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H214[24;56H0 [3;18H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00018716-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00018716-501   [5;18H[1m[37m[44m                                       [1;37H[24;56H0 [3;18H[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00018609-501   [4;31H609-501 REV B1 ASSY,MAIN BOARD       [5;18HC to Change, D to Delete, S to Skip   C[11;23H54[24;56H[22m[30m[47m0-[24;56H',
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H214[24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
-
-
-ItemID: 00018609-501 
-
 $VAR1 = [
           1,
           undef,
-          'Value too',
-          '[1;7H[1m[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00018609-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;7H[31m[40m',
-          ' large, must be <= 35[3;18H[37m[44m00017959-501   [4;30H7959-501 REV A5 PCBA,ROTOMOD BOARD[5;18HC to Change, D to Delete, S to Skip   C[6;64HA5[11;22H392[16;65H6[21;22HKELLY[24;56H[22m[30m[47m0-[24;56H',
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    ',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
           bless( \*Symbol::GEN0, 'Expect' )
         ];
 
-
-ItemID: 00017959-501 
-
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
 $VAR1 = [
+          1,
           undef,
-          '1:TIMEOUT',
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
           undef,
-          '[1;7H[1m[31m[40mRECORD CHANGED[37m[44m                [3;18H[22m[30m[47m00017959-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[3;22H[22m[30m[47m6126[4;30H[1m[37m[44m6126-501 REV4.10 PCBA,TVC         [6;64H4.1[11;22H138[16;67H18[21;22H     [3;18H',
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
           undef,
-          undef
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H[1m[37m[44m00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [3;18H[3;30H[22m[30m[47m---[3;30H',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
         ];
 
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    ',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
 
-ItemID: 00016126-501 
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H[22m[30m[47m0[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H[22m[30m[47m0[24;56H[1m[37m[44m0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    ',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
 
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H[1m[37m[44m00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [3;18H[3;30H[22m[30m[47m---[3;30H',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H[1m[37m[44m00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [3;18H[3;30H[22m[30m[47m---[3;30H',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    ',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '[11;22H214[24;56H[1m[37m[44m8 [11;22H[1;7H[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H214[24;56H0[3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [11;22H214[24;56H0[3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H[1m[37m[44m00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [3;18H[3;30H[22m[30m[47m---[3;30H',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Enter your choice',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H[1;5H01              [2;1H     Inventory Control        Version 2.3.021 X61771X                      [3;2H    Copyright (c) 2004 The Stratford Group         [4;2H    INMASS-II (r) Integrated Manufacturing Software Series        [5;1H[K[6;2H     1. Inventory File Maintenance                              [7;2H     2. Return to INMASS-II (r)                                   [8;1H[K[9;1H[K[10;1H[K[11;1H[K[12;1H[K[13;1H[K[14;1H[K[15;1H[K[16;1H[K[17;1H[K[18;1H[K[19;1H[K[20;1H                                        Qual-Pro Corporation[21;1H                                        Monday, June 25, 2012[22;1H',
+          '             [22m[30m[47m2[1m[37m[44m         Console 15         [23;1H                                        Multi User MSDOS Network[24;1H[K[22;31H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'Item        *',
+          '[22m[30m[47m1[1;5H[1m[37m[44m1[2;1H************************* Inventory File Maintenance **********************[3;2H1. ',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. M',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[3;18H[1m[37m[44m00023389-501',
+          '[22m[30m[47m00023389-501   [1m[37m[44m    (Escape to quit)[4;2H2. Description                                            [5;9HACTION :[6;2H3. Avg. Cost                          21. Revision #[7;2H4. Std. Cost                          22. Shrinkage Factor[8;2H5. Stocking Unit                      23. Price Level[9;2H6. Alt. Unit                              Markup[10;2H7. Unit Conversion                        Price[11;2H8. Lead Time                              Qty Break[12;2H9. ABC Class                          24. Multi-Loc[13;1H10. Cycle Count                        25. Warehouse[14;1H11. Unit Weight                        26. Location[15;1H12. Discount Matrix                    27. Safety Stock[16;1H13. A/R, A/P Codes                     28. Last Cycle Date[17;1H14. Item Class                         29. Lot Size[18;1H15. Commodity Code                     30. Min Order Qty[19;1H16. Class. Group                       31. Taxable[20;1H17. Product Family                     32. (reserved)       [21;1H18. Planner                            33. Status            [22;1H19. Buyer                              34. Vendor File Edit[23;1H20. Drawing #                          35. History File Edit    [3;18H[3;30H[22m[30m[47m---[3;30H',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+
+ Input: \e\[3;18H(\e\[(1|37|44)m)*00023389-501 
+$VAR1 = [
+          1,
+          undef,
+          'Enter Number to Change',
+          '   [4;18HCONSIGN 23389-501 REV A3 TV PERSONALITY MOTOR DRIV[5;18HC to Change, D to Delete, S to Skip   [22m[30m[47mC[6;22H[1m[37m[44m0.0000            21. Revision #          A3[7;22H0.0000            22. Shrinkage Factor    0.00[8;22HEA                23. Price Level  1[9;22HEA                    Markup              0.0000[10;22H1.00                  Price               0.000000[11;22H214[12;22HC                 24. Multi-Loc           Y[13;22H0                 25. Warehouse           WP[14;22H0.00              26. Location            WIP[15;22H0                 27. Safety Stock        0.00[16;64H04/16/09[17;22HF                 29. Lot Size            1.00[18;64H1.00[19;64HN[21;22HKELLY[22;22HPETER[5;56H[5;57H[5;56HC[24;2H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-[24;56H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          '[24;56H',
+          ' (Press RETURN to Continue)     [22m[30m[47m0-',
+          '',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
+$VAR1 = [
+          1,
+          undef,
+          'RECORD CHANGED',
+          '8[24;56H0[24;56H[1;7H[1m[31m[40m',
+          '[3;18H[22m[30m[47m00023389-501   [5;18H[1m[37m[44m                                       [24;56H0 [3;18H',
+          bless( \*Symbol::GEN0, 'Expect' )
+        ];
